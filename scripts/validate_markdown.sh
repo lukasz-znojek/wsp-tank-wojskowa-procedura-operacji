@@ -46,7 +46,10 @@ while IFS= read -r file; do
   relative="${file#"${repo_root}/"}"
   problems=()
 
-  mapfile -t found < <(grep '^## ' "${file}" || true)
+  found=()
+  while IFS= read -r heading; do
+    found+=("${heading}")
+  done < <(grep '^## ' "${file}" || true)
 
   for section in "${required_sections[@]}"; do
     if ! grep -qxF "${section}" "${file}"; then

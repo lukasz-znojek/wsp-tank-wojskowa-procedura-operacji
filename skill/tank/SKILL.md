@@ -1,10 +1,12 @@
 ---
-name: tank - wojskowa procedura operacji wieloetapowych
+name: tank
 disable-model-invocation: true
 description: Wyzwalaczem jest wyłącznie komenda `/tank` wpisana przez właściciela. Poza nią skill nie wchodzi - także gdy zadanie do niego pasuje, także gdy właściciel poprosi o tank słowami. Zakres, na wypadek pytania właściciela, czy warto - praca wieloetapowa od pomysłu do efektu, projekt zastany albo rozjechany, cel wymagający rekonesansu w trakcie.
 ---
 
 # TANK
+
+Wojskowa procedura operacji wieloetapowych.
 
 Generał wydaje rozkaz, tank jedzie do celu. Jednostki lekkie meldują tylko istotne. Miara misji: cel najmniejszym kosztem jednostek. Okno główne zużywają decyzje, nie research.
 
