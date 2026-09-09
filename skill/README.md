@@ -5,6 +5,8 @@ Ten katalog przechowuje pod kontrolą wersji skill Claude Code `tank` —
 
 ## Instalacja
 
+Komendę uruchamiasz z katalogu głównego repozytorium, a nie z katalogu `skill/`:
+
 ```bash
 cp -R skill/tank ~/.claude/skills/tank
 ```
