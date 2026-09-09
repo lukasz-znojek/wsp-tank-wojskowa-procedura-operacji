@@ -15,6 +15,11 @@ set -euo pipefail
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 procedures_dir="${repo_root}/docs/03-procedures"
 
+# Katalogi wyłączone z całorepozytoryjnych skanów (sekcje 2 i 3) — nie są
+# śledzone przez git i mogą legalnie zawierać wzorce, o których te skany
+# ostrzegają (np. workspace planowania, który je omawia).
+excluded_dirs=(.superpowers)
+
 required_sections=(
   "## Cel"
   "## Zakres"
@@ -86,6 +91,14 @@ fi
 echo
 echo "Sprawdzono procedur: ${checked}, z błędami: ${failed}"
 
+# Zbuduj listę --exclude-dir dla grepa z tablicy excluded_dirs powyżej —
+# tak nowy wykluczony katalog to jeden dopisany element, nie druga zmiana
+# w dwóch miejscach.
+exclude_args=()
+for dir in "${excluded_dirs[@]}"; do
+  exclude_args+=("--exclude-dir=${dir}")
+done
+
 # --- 2. Tekst zastępczy ---
 
 echo
@@ -93,7 +106,7 @@ placeholder_hits=0
 while IFS= read -r hit; do
   echo "BŁĄD tekst zastępczy: ${hit}" >&2
   placeholder_hits=$((placeholder_hits + 1))
-done < <(grep -rnF "${placeholder}" --include='*.md' "${repo_root}" \
+done < <(grep -rnF "${placeholder}" --include='*.md' "${exclude_args[@]}" "${repo_root}" \
            | sed "s|^${repo_root}/||" || true)
 
 if [[ ${placeholder_hits} -gt 0 ]]; then
@@ -110,7 +123,7 @@ path_hits=0
 while IFS= read -r hit; do
   echo "BŁĄD ścieżka bezwzględna: ${hit}" >&2
   path_hits=$((path_hits + 1))
-done < <(grep -rnE '/Users/|/home/|C:\\' --include='*.md' "${repo_root}" \
+done < <(grep -rnE '/Users/|/home/|C:\\' --include='*.md' "${exclude_args[@]}" "${repo_root}" \
            | sed "s|^${repo_root}/||" || true)
 
 if [[ ${path_hits} -gt 0 ]]; then
