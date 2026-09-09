@@ -57,14 +57,8 @@ Oba polecenia uruchamia także workflow [`validate-docs`](.github/workflows/vali
 
 ## Stan treści
 
-Struktura repozytorium jest kompletna. Treść przeniesiona z materiałów źródłowych — siedem procedur, cztery szablony, materiały referencyjne, glosariusz, architektura pojęciowa i model stanów — jest gotowa. Pozostałe dokumenty produktowe, ADR-y i dokumenty governance mają szkielety z treścią oznaczoną `[do uzupełnienia]`.
+Dokumentacja jest ukończona: struktura, treść, przykłady i kontrola zgodności. Siedem procedur, pięć szablonów, cztery kontrakty danych, cztery zapisy ADR, trzy przykłady syntetyczne oraz dokumenty produktowe, architektoniczne i governance.
 
-Pochodzenie materiałów, zakres przeniesienia i rozstrzygnięte rozbieżności opisuje [rejestr pochodzenia](docs/05-reference/sources.md). Zagnieżdżony katalog źródłowy został usunięty po potwierdzeniu przeniesienia treści plik po pliku; pliki źródłowe pozostają odtwarzalne z historii repozytorium.
+Pochodzenie materiałów, zakres przeniesienia i rozstrzygnięte rozbieżności opisuje [rejestr pochodzenia](docs/05-reference/sources.md). Katalog materiałów źródłowych został usunięty po kontroli przeniesienia plik po pliku; pliki źródłowe pozostają odtwarzalne z historii repozytorium.
 
-Liczbę dokumentów oczekujących na treść odtwarza polecenie — liczy puste sekcje, nie wystąpienia samego tekstu:
-
-```bash
-grep -rl '^\[do uzupełnienia\]$' --include='*.md' docs/ examples/ | wc -l
-```
-
-Wynik na dziś: **22** dokumenty z pustymi sekcjami, **20** dokumentów z treścią kompletną.
+Stan zmierzony i ryzyka stałe wraz z kontrolą ograniczającą każde: [status projektu](docs/00-overview/status-projektu.md).

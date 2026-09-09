@@ -8,7 +8,7 @@ Materiał wywodzi się z dokumentu roboczego `prompt-bms-claude-design.md`, przy
 
 ## Rola tego materiału
 
-Materiał niesie **kontrakt widoku**: listę bloków, które widok stanu scenariusza musi zawierać, oraz ograniczenia, w których taki widok da się zbudować. Wiążącym opisem architektury jest [architektura BMS](../02-architecture/architektura-bms.md), a wiążącym formatem wpisu — [szablon BMS](../04-templates/bms.md). Przy rozjeździe rozstrzyga dokument wiążący.
+Materiał niesie **kontrakt widoku**: listę bloków, które widok stanu scenariusza musi zawierać, oraz ograniczenia, w których taki widok da się zbudować. Wiążącym opisem architektury jest [architektura BMS](../02-architecture/architektura-bms.md), a wiążącym formatem wpisu — [szablon BMS](../04-templates/wpis-bms.md). Przy rozjeździe rozstrzyga dokument wiążący.
 
 Kontrakt zachowano dlatego, że nazwy bloków i kolumn są przepisywane z artefaktów scenariusza. Zmiana nazwy rozjeżdża widok ze źródłem, więc nazwy traktuje się jako ustalone, a nie jako propozycję.
 
@@ -97,6 +97,6 @@ Sprawdzalne, nie „ładnie":
 ## Powiązane artefakty
 
 - Architektura: [architektura BMS](../02-architecture/architektura-bms.md), [model danych](../02-architecture/model-danych.md), [model stanów](../02-architecture/model-stanow.md)
-- Szablon: [BMS](../04-templates/bms.md)
+- Szablon: [BMS](../04-templates/wpis-bms.md)
 - Procedura: [przejazd](../03-procedures/przejazd.md)
 - Pochodzenie: [rejestr pochodzenia](sources.md)

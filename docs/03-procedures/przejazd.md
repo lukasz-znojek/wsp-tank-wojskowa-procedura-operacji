@@ -82,7 +82,7 @@ Stosuje się po zatwierdzeniu planu operacji, powtarzalnie, aż pozycja pierwsza
 
 ## Powiązane artefakty
 
-- Szablony: [SITREP](../04-templates/sitrep.md), [dziennik operacyjny](../04-templates/dziennik-operacyjny.md), [plan operacji](../04-templates/plan-operacji.md), [BMS](../04-templates/bms.md)
+- Szablony: [SITREP](../04-templates/sitrep.md), [dziennik operacyjny](../04-templates/dziennik-operacyjny.md), [plan operacji](../04-templates/plan-operacji.md), [BMS](../04-templates/wpis-bms.md)
 - Procedury: [zwiad](zwiad.md), [komenda](komenda.md), [meldunek](meldunek.md), [think-tank](think-tank.md)
 - Kontrakty danych: [`schemas/sitrep.schema.json`](../../schemas/sitrep.schema.json), [`schemas/bms-event.schema.json`](../../schemas/bms-event.schema.json)
 - Model stanów: [model stanów](../02-architecture/model-stanow.md)

@@ -94,7 +94,7 @@ Stosuje się raz, po ostatnim przejeździe i przed rozwiązaniem zespołu scenar
 
 ## Powiązane artefakty
 
-- Szablony: [plan operacji](../04-templates/plan-operacji.md), [SITREP](../04-templates/sitrep.md), [dziennik operacyjny](../04-templates/dziennik-operacyjny.md), [BMS](../04-templates/bms.md)
+- Szablony: [plan operacji](../04-templates/plan-operacji.md), [SITREP](../04-templates/sitrep.md), [dziennik operacyjny](../04-templates/dziennik-operacyjny.md), [BMS](../04-templates/wpis-bms.md)
 - Procedury: [przejazd](przejazd.md), [zwiad](zwiad.md), [komenda](komenda.md)
 - Governance: [polityka zmian procedur](../06-governance/polityka-zmian-procedur.md)
 - Referencje: [katalog zdolności rezerwowych](../05-reference/arsenal.md)

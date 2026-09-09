@@ -6,12 +6,17 @@ Szablon pozostaje pusty. Wypełniony szablon przestaje być szablonem i staje si
 
 ## Zawartość katalogu
 
-| Szablon | Artefakt | Kontrakt danych | Przykład |
+| Szablon | Zastosowanie | Powiązana procedura | Przykład |
 | --- | --- | --- | --- |
-| [bms.md](bms.md) | wpis w widoku stanu | [`schemas/bms-event.schema.json`](../../schemas/bms-event.schema.json) | nie dotyczy — wpisy widoku pokazuje [dziennik komunikatów](../../examples/communication-log-example.md) |
-| [dziennik-operacyjny.md](dziennik-operacyjny.md) | dziennik operacyjny | [`schemas/message.schema.json`](../../schemas/message.schema.json) | [`examples/communication-log-example.md`](../../examples/communication-log-example.md) |
-| [plan-operacji.md](plan-operacji.md) | plan operacji | [`schemas/operation.schema.json`](../../schemas/operation.schema.json) | [`examples/operation-example-alpha.md`](../../examples/operation-example-alpha.md) |
-| [sitrep.md](sitrep.md) | SITREP | [`schemas/sitrep.schema.json`](../../schemas/sitrep.schema.json) | [`examples/sitrep-example.md`](../../examples/sitrep-example.md) |
+| [plan-operacji.md](plan-operacji.md) | plan fikcyjnego scenariusza: cel, mapa etapów, progi, zależności | [think-tank](../03-procedures/think-tank.md) | [`operation-example-alpha.md`](../../examples/operation-example-alpha.md) |
+| [wpis-bms.md](wpis-bms.md) | jedno zdarzenie w widoku stanu, z oceną pewności | [zwiad](../03-procedures/zwiad.md), [rozpoznanie](../03-procedures/rozpoznanie.md), [komenda](../03-procedures/komenda.md) | nie dotyczy — wpisy widoku pokazuje dziennik przykładowy |
+| [komunikat.md](komunikat.md) | jedna wymiana informacji między rolami | [łączność](../03-procedures/lacznosc.md) | [`communication-log-example.md`](../../examples/communication-log-example.md) |
+| [sitrep.md](sitrep.md) | raport stanu w trakcie scenariusza | [meldunek](../03-procedures/meldunek.md), [przejazd](../03-procedures/przejazd.md) | [`sitrep-example.md`](../../examples/sitrep-example.md) |
+| [dziennik-operacyjny.md](dziennik-operacyjny.md) | rejestr zdarzeń i rejestr naruszeń scenariusza | [przejazd](../03-procedures/przejazd.md), [komenda](../03-procedures/komenda.md) | [`communication-log-example.md`](../../examples/communication-log-example.md) |
+
+Kontrakty danych: [`operation.schema.json`](../../schemas/operation.schema.json), [`bms-event.schema.json`](../../schemas/bms-event.schema.json), [`message.schema.json`](../../schemas/message.schema.json), [`sitrep.schema.json`](../../schemas/sitrep.schema.json). Odwzorowanie nazw kontraktów na typy artefaktów: [model danych](../02-architecture/model-danych.md).
+
+Dziennik operacyjny nie jest osobnym typem danych — jest rejestrem wpisów, dlatego nie ma własnego kontraktu.
 
 ## Zasady wypełniania
 
@@ -31,4 +36,4 @@ Szablon pozostaje pusty. Wypełniony szablon przestaje być szablonem i staje si
 1. [plan operacji](plan-operacji.md) — niesie stan scenariusza i jest punktem odniesienia dla pozostałych.
 2. [dziennik operacyjny](dziennik-operacyjny.md) — niesie historię zdarzeń.
 3. [SITREP](sitrep.md) — raport przyrostowy w trakcie.
-4. [BMS](bms.md) — wpis w widoku stanu, który jest widokiem powyższych, nie ich zamiennikiem.
+4. [BMS](wpis-bms.md) — wpis w widoku stanu, który jest widokiem powyższych, nie ich zamiennikiem.

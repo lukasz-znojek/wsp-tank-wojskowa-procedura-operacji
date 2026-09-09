@@ -57,7 +57,7 @@ Stosuje się na wejściu każdego scenariusza obejmującego co najmniej dwa etap
 
 9. **Audyt braków.** Zadanie analityczne z pytaniem odwrotnym do rozpoznania: nie „co tam jest", ale *jakie pytania musiałby zadać wykonawca, żeby ruszyć bez dopytywania*. Jedno zadanie na pozycję mapy, równolegle, bez wykonywania samej pozycji. Zwrot: pytanie w jednej linii, wskazanie miejsca w dokumentacji albo słowo `brak`, oraz pozycja, od której brak blokuje. **Zero pytań na pozycji oznacza gotowość tej pozycji**; braki na pozycjach dalszych nie wstrzymują startu. Pytania idą do koordynatora **jedną rundą**.
 
-10. **Publikacja widoku stanu.** Zbuduj widok wg [szablonu BMS](../04-templates/bms.md) i wpisz jego adres do planu operacji. Widok powstaje **przed** zatwierdzeniem, bo plan pokazany tylko w rozmowie przestaje być widoczny po kilku wymianach.
+10. **Publikacja widoku stanu.** Zbuduj widok wg [szablonu BMS](../04-templates/wpis-bms.md) i wpisz jego adres do planu operacji. Widok powstaje **przed** zatwierdzeniem, bo plan pokazany tylko w rozmowie przestaje być widoczny po kilku wymianach.
 
 11. **Zatwierdzenie.** Koordynator zatwierdza plan. Bez zatwierdzenia praca nad etapami się nie zaczyna.
 
@@ -89,8 +89,8 @@ Stosuje się na wejściu każdego scenariusza obejmującego co najmniej dwa etap
 
 ## Powiązane artefakty
 
-- Szablony: [plan operacji](../04-templates/plan-operacji.md), [dziennik operacyjny](../04-templates/dziennik-operacyjny.md), [BMS](../04-templates/bms.md)
+- Szablony: [plan operacji](../04-templates/plan-operacji.md), [dziennik operacyjny](../04-templates/dziennik-operacyjny.md), [BMS](../04-templates/wpis-bms.md)
 - Procedury: [rozpoznanie](rozpoznanie.md), [zwiad](zwiad.md), [łączność](lacznosc.md), [przejazd](przejazd.md)
 - Kontrakt danych: [`schemas/operation.schema.json`](../../schemas/operation.schema.json)
 - Przykład: [`examples/operation-example-alpha.md`](../../examples/operation-example-alpha.md)
-- Decyzje: [ADR-004](../02-architecture/decyzje/ADR-004.md)
+- Decyzje: [ADR-004](../02-architecture/decyzje/adr-004-rozdzielenie-artefaktow.md)
