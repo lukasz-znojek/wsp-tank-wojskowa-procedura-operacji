@@ -16,7 +16,7 @@ dokumentacja repozytorium opisuje ten cel, a nie poprzedni.
 
 | Obszar | Co obejmuje |
 | --- | --- |
-| Pliki skilla | 13 plików w [`skill/tank/`](../../../skill/tank/): `SKILL.md`, procedury, szablony i arsenał komend. Źródło prawdy o znaczeniu wykonawczym żargonu — patrz [ADR-005](../02-architecture/decyzje/adr-005-cel-skill-orkiestrujacy.md) |
+| Pliki skilla | 13 plików w [`skill/tank/`](../../skill/tank/): `SKILL.md`, procedury, szablony i arsenał komend. Źródło prawdy o znaczeniu wykonawczym żargonu — patrz [ADR-005](../02-architecture/decyzje/adr-005-cel-skill-orkiestrujacy.md) |
 | Walidatory | [`scripts/validate_schemas.py`](../../scripts/validate_schemas.py), [`scripts/validate_markdown.sh`](../../scripts/validate_markdown.sh) oraz walidator samodzielności skilla z zadania 3 |
 | Governance | klasyfikacja informacji, polityka wersjonowania, polityka zmian — [`docs/06-governance/`](../06-governance/README.md) |
 | Decyzje | zapisy ADR w [`docs/02-architecture/decyzje/`](../02-architecture/decyzje/) dla zmian celu, zakresu i architektury repozytorium |
@@ -43,7 +43,7 @@ rola należała do ADR-001 i skończyła się wraz z jego zastąpieniem.
 **Jak czytać żargon wojskowy.** Zgodnie z regułą 1 [ADR-005](../02-architecture/decyzje/adr-005-cel-skill-orkiestrujacy.md)
 nazwy stopni, komend i etapów użyte w plikach skilla są jego treścią
 wykonawczą, nie ozdobą stylistyczną — mają znaczenie zdefiniowane wprost
-w plikach [`skill/tank/`](../../../skill/tank/).
+w plikach [`skill/tank/`](../../skill/tank/).
 
 **Rozstrzyganie rozbieżności.** Przy rozjeździe między opisem w `docs/`
 a plikiem skilla rozstrzyga plik skilla — reguła 2 ADR-005. Dokumentacja

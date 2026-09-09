@@ -19,10 +19,15 @@ pomysłu do wdrożenia, w którym jedno główne okno orkiestruje agentów, a ca
 nazwy stopni, komend i etapów — jest w żargonie wojskowym. W tym celu żargon nie
 jest przekładany na nic neutralnego; jest mechanizmem, przez który skill działa.
 
-Zgodnie z [polityką wersjonowania](../../06-governance/polityka-wersjonowania.md)
-decyzji się nie kasuje — dopisuje się następną ze statusem zastępującym. Dopóki
-ADR-001 stał jako „Zaakceptowana", każda zmiana treści na żargon wojskowy była
-sprzeczna z własnym zapisem repozytorium. Ten ADR rozstrzyga sprzeczność.
+Dopóki ADR-001 stał jako „Zaakceptowana", każda zmiana treści na żargon wojskowy
+była sprzeczna z własnym zapisem repozytorium. Ten ADR rozstrzyga sprzeczność
+i jednocześnie ustanawia, jak repozytorium postępuje z decyzjami, które
+znajdują się w takiej sprzeczności: ADR-a się nie kasuje, dopisuje się następny
+ze statusem zastępującym. Uzasadnienie tej reguły jest częścią tej decyzji, nie
+cudzego dokumentu: usunięta decyzja nie daje się zaudytować — czytelnik nie
+odtworzyłby ani na jakiej podstawie zmiana zapadła, ani czego dokładnie
+dotyczyła decyzja, którą zastąpiono. ADR-001 zostaje więc w drzewie ze
+zmienionym statusem (Krok 3 tego zadania), a nie znika.
 
 ## Decyzja
 
