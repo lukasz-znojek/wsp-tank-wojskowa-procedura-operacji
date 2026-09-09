@@ -88,7 +88,7 @@ Wersjonowanie samego artefaktu przy zmianie po publikacji: [polityka wersjonowan
 ## Powiązane artefakty
 
 - Kontrakty danych: [`schemas/`](../../schemas/) — wszystkie cztery używają tego samego słownika statusów
-- Szablony: [plan operacji](../04-templates/plan-operacji.md), [BMS](../04-templates/bms.md), [SITREP](../04-templates/sitrep.md), [dziennik operacyjny](../04-templates/dziennik-operacyjny.md)
+- Szablony: [plan operacji](../04-templates/plan-operacji.md), [BMS](../04-templates/wpis-bms.md), [SITREP](../04-templates/sitrep.md), [dziennik operacyjny](../04-templates/dziennik-operacyjny.md)
 - Architektura: [architektura BMS](architektura-bms.md), [model danych](model-danych.md)
 - Produkt: [role i uprawnienia](../01-product/role-i-uprawnienia.md), [kryteria akceptacji](../01-product/kryteria-akceptacji.md)
 - Pochodzenie rozbieżności: [pochodzenie materiałów](../05-reference/sources.md)
