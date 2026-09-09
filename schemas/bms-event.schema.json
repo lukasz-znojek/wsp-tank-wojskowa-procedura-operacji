@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lukasz-znojek.github.io/wsp-tank-wojskowa-procedura-operacji/schemas/bms-event.schema.json",
+  "title": "Wpis BMS (zdarzenie symulacyjne)",
+  "description": "Kontrakt danych wpisu w symulacyjnym środowisku BMS. Wyłącznie dane syntetyczne. Schemat celowo nie zawiera pól na współrzędne geograficzne, dane osobowe ani dane operacyjne.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "pattern": "^[A-Z0-9-]+$" },
+    "synthetic": { "const": true },
+    "title": { "type": "string", "minLength": 1, "maxLength": 200 },
+    "status": {
+      "type": "string",
+      "enum": ["szkic", "do-przegladu", "zatwierdzony", "opublikowany", "odrzucony"]
+    },
+    "author_role": { "type": "string", "pattern": "^[A-Za-z0-9-]+$" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "event_time_label": {
+      "type": "string",
+      "pattern": "^T\\+[0-9]{2}:[0-9]{2}$",
+      "description": "Czas zdarzenia jako względna etykieta scenariusza, np. T+00:15. Bez czasu rzeczywistego."
+    },
+    "event_type": {
+      "type": "string",
+      "enum": ["obserwacja", "zadanie", "decyzja", "zmiana-statusu", "adnotacja"]
+    },
+    "priority": { "type": "string", "enum": ["niski", "sredni", "wysoki"] },
+    "confidence": { "type": "string", "enum": ["potwierdzone", "prawdopodobne", "niepotwierdzone"] },
+    "description": { "type": "string", "minLength": 1 },
+    "reference_points": {
+      "type": "array",
+      "description": "Abstrakcyjne punkty odniesienia scenariusza, np. Punkt-A. Nie zapisuj rzeczywistych lokalizacji ani współrzędnych.",
+      "items": { "type": "string", "pattern": "^Punkt-[A-Z0-9]+$" }
+    },
+    "sources": { "type": "array", "items": { "type": "string", "pattern": "^[A-Z0-9-]+$" } },
+    "related_artifacts": { "type": "array", "items": { "type": "string", "pattern": "^[A-Z0-9-]+$" } },
+    "acknowledged": { "type": "boolean" }
+  },
+  "required": ["id", "synthetic", "title", "status", "event_type", "confidence", "description"]
+}

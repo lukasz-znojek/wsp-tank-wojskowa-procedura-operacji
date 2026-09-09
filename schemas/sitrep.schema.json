@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lukasz-znojek.github.io/wsp-tank-wojskowa-procedura-operacji/schemas/sitrep.schema.json",
+  "title": "SITREP (meldunek sytuacyjny scenariusza symulacyjnego)",
+  "description": "Kontrakt danych meldunku sytuacyjnego dla fikcyjnego scenariusza szkoleniowego. Wyłącznie dane syntetyczne.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "pattern": "^[A-Z0-9-]+$" },
+    "synthetic": { "const": true },
+    "status": {
+      "type": "string",
+      "enum": ["szkic", "do-przegladu", "zatwierdzony", "opublikowany", "odrzucony"]
+    },
+    "operation_id": { "type": "string", "pattern": "^[A-Z0-9-]+$" },
+    "reporting_period_label": { "type": "string", "minLength": 1, "maxLength": 120 },
+    "author_role": { "type": "string", "pattern": "^[A-Za-z0-9-]+$" },
+    "summary": { "type": "string", "minLength": 1 },
+    "confirmed_items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "statement": { "type": "string", "minLength": 1 },
+          "source_id": { "type": "string", "pattern": "^[A-Z0-9-]+$" }
+        },
+        "required": ["statement"]
+      }
+    },
+    "assessments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "hypothesis": { "type": "string", "minLength": 1 },
+          "confidence": { "type": "string", "enum": ["potwierdzone", "prawdopodobne", "niepotwierdzone"] },
+          "falsifier": { "type": "string" }
+        },
+        "required": ["hypothesis", "confidence"]
+      }
+    },
+    "gaps": { "type": "array", "items": { "type": "string" } },
+    "follow_up_actions": { "type": "array", "items": { "type": "string" } },
+    "sources": { "type": "array", "items": { "type": "string", "pattern": "^[A-Z0-9-]+$" } }
+  },
+  "required": ["id", "synthetic", "status", "operation_id", "reporting_period_label", "summary"]
+}

@@ -1,0 +1,29 @@
+name: validate-docs
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Walidacja dokumentacji i schematów
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pobranie repozytorium
+        uses: actions/checkout@v4
+
+      - name: Ustawienie Pythona
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Walidacja JSON Schema
+        run: python3 scripts/validate_schemas.py
+
+      - name: Walidacja procedur Markdown
+        run: bash scripts/validate_markdown.sh
