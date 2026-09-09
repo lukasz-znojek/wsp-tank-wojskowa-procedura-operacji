@@ -1,12 +1,12 @@
 # Architektura BMS
 
-Opis architektury **pojęciowej** symulacyjnego środowiska BMS. Nie jest opisem wdrożenia: na tym etapie projekt nie ma integracji produkcyjnych — patrz [integracje](integracje.md) i [ADR-001](decyzje/ADR-001.md).
+Opis architektury **pojęciowej** symulacyjnego środowiska BMS. Nie jest opisem wdrożenia: na tym etapie projekt nie ma integracji produkcyjnych — patrz [integracje](integracje.md) i [ADR-001](decyzje/adr-001-zakres-symulacyjny.md).
 
 ## Zasada wiodąca
 
 **Pliki dokumentacji są źródłem prawdy. Widok jest widokiem i kanałem zwrotnym, nigdy drugą prawdą — przy rozjeździe rozstrzyga plik.**
 
-Z tej zasady wynika reguła, którą musi respektować każdy element architektury: zgłoszenie przyjęte przez widok **nie zmienia stanu scenariusza samo z siebie**. Autor prowadzący je odczytuje, przepisuje do planu operacji i dopiero ten zapis jest stanem. Architektura, która pozwala widokowi zapisać stan bezpośrednio, łamie [ADR-002](decyzje/ADR-002.md).
+Z tej zasady wynika reguła, którą musi respektować każdy element architektury: zgłoszenie przyjęte przez widok **nie zmienia stanu scenariusza samo z siebie**. Autor prowadzący je odczytuje, przepisuje do planu operacji i dopiero ten zapis jest stanem. Architektura, która pozwala widokowi zapisać stan bezpośrednio, łamie [ADR-002](decyzje/adr-002-markdown-zrodlo-prawdy.md).
 
 ## Pięć elementów
 
@@ -110,7 +110,7 @@ Ocena stanu, nie planu. Element „opisany" ma dokument; element „zrealizowany
 
 ## Powiązane artefakty
 
-- Decyzje: [ADR-001](decyzje/ADR-001.md), [ADR-002](decyzje/ADR-002.md), [ADR-003](decyzje/ADR-003.md), [ADR-004](decyzje/ADR-004.md)
+- Decyzje: [ADR-001](decyzje/adr-001-zakres-symulacyjny.md), [ADR-002](decyzje/adr-002-markdown-zrodlo-prawdy.md), [ADR-003](decyzje/adr-003-json-schema.md), [ADR-004](decyzje/adr-004-rozdzielenie-artefaktow.md)
 - Architektura: [model danych](model-danych.md), [model stanów](model-stanow.md), [integracje](integracje.md)
-- Szablon: [BMS](../04-templates/bms.md)
+- Szablon: [BMS](../04-templates/wpis-bms.md)
 - Referencja: [prompt projektowy interfejsu BMS](../05-reference/prompt-bms-design.md)

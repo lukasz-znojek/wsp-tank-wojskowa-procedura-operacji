@@ -46,6 +46,6 @@ Ta sama reguła złamana trzeci raz przez **różnych** wykonawców jest defekte
 ## Powiązane artefakty
 
 - Procedury: [przejazd](../03-procedures/przejazd.md), [zwiad](../03-procedures/zwiad.md), [komenda](../03-procedures/komenda.md)
-- Szablony: [plan operacji](plan-operacji.md), [BMS](bms.md)
+- Szablony: [plan operacji](plan-operacji.md), [BMS](wpis-bms.md)
 - Kontrakt danych: [`schemas/message.schema.json`](../../schemas/message.schema.json)
 - Przykład: [`examples/communication-log-example.md`](../../examples/communication-log-example.md)

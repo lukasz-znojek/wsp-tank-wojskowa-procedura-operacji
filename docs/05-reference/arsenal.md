@@ -37,7 +37,7 @@ Pominięcie kroku 3 jest najczęstszym błędem: zdolność wchodzi do procedury
 | **Izolowana kopia materiału** (*przyczółek*) | zmiana o dużym zasięgu: kopia nietknięta znika sama, przyjęta jest scalana | jedyna pozycja katalogu przywołana w [procedurze przejazdu](../03-procedures/przejazd.md), krok 3 |
 | **Kontrola kontraktu zwrotu** (*wartownik*) | sprawdzenie, czy zwrot zadania analitycznego spełnia kontrakt, **przed** jego przyjęciem; oraz ponowne wstrzyknięcie stanu scenariusza po skróceniu kontekstu | jedyna pozycja katalogu o charakterze blokady technicznej, nie zapisu |
 | **Zewnętrzna ocena warunku końcowego** (*obserwator*) | orzekanie o ukończeniu przez osobę albo mechanizm nieuczestniczący w pracy | zasada, która za tym stoi, jest merytoryczna: o ukończeniu nie orzeka ten, kto pracował. Widzi wyłącznie zapis rozmowy, nie plan operacji |
-| **Raport jako prywatna strona** (*depesza*) | raport jednorazowy, na wyzwalacz | **nie mylić z widokiem stanu**: widok jest opisany w [szablonie BMS](../04-templates/bms.md) i żyje przez cały scenariusz |
+| **Raport jako prywatna strona** (*depesza*) | raport jednorazowy, na wyzwalacz | **nie mylić z widokiem stanu**: widok jest opisany w [szablonie BMS](../04-templates/wpis-bms.md) i żyje przez cały scenariusz |
 | **Konektory do systemów zewnętrznych** (*agentura*) | odczyt materiału z systemów poza repozytorium | **poza zakresem tego projektu** — patrz [integracje](../02-architecture/integracje.md); wpisana wyłącznie dla kompletności katalogu |
 
 ## Ograniczenia
