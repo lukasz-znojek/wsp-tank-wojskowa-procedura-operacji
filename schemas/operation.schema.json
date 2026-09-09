@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lukasz-znojek.github.io/wsp-tank-wojskowa-procedura-operacji/schemas/operation.schema.json",
+  "title": "Plan operacji (scenariusz symulacyjny)",
+  "description": "Kontrakt danych planu fikcyjnego scenariusza szkoleniowego. Wyłącznie dane syntetyczne.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Z0-9-]+$",
+      "description": "Syntetyczny identyfikator planu."
+    },
+    "synthetic": {
+      "const": true,
+      "description": "Znacznik danych syntetycznych. Zawsze true."
+    },
+    "title": { "type": "string", "minLength": 1, "maxLength": 200 },
+    "status": {
+      "type": "string",
+      "enum": ["szkic", "do-przegladu", "zatwierdzony", "opublikowany", "odrzucony"]
+    },
+    "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "owner_role": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9-]+$",
+      "description": "Syntetyczne oznaczenie roli, np. Koordynator-01. Nie zapisuj danych osobowych."
+    },
+    "scenario_goal": { "type": "string", "minLength": 1 },
+    "assumptions": { "type": "array", "items": { "type": "string" } },
+    "roles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "role": { "type": "string", "enum": ["autor", "recenzent", "koordynator", "administrator"] },
+          "label": { "type": "string", "pattern": "^[A-Za-z0-9-]+$" }
+        },
+        "required": ["role", "label"]
+      }
+    },
+    "stages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ordinal": { "type": "integer", "minimum": 1 },
+          "name": { "type": "string", "minLength": 1 },
+          "expected_result": { "type": "string" },
+          "verification": { "type": "string" },
+          "status": {
+            "type": "string",
+            "enum": ["szkic", "do-przegladu", "zatwierdzony", "opublikowany", "odrzucony"]
+          }
+        },
+        "required": ["ordinal", "name", "status"]
+      }
+    },
+    "completion_criteria": { "type": "array", "items": { "type": "string" } },
+    "risks": { "type": "array", "items": { "type": "string" } },
+    "related_artifacts": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[A-Z0-9-]+$" }
+    }
+  },
+  "required": ["id", "synthetic", "title", "status", "version", "scenario_goal", "stages"]
+}
