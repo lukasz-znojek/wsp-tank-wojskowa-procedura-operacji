@@ -15,6 +15,27 @@ SITREP raportuje stan scenariusza **w trakcie**, przyrostowo od poprzedniego SIT
 | Autor | [ ] | oznaczenie syntetyczne roli, np. `Analityk-01` |
 | Dane syntetyczne | tak | pole obowiązkowe |
 
+**Odwzorowanie na kontrakt danych** - kolumna „Obowiązkowość” odpowiada liście `required` w kontrakcie [`sitrep.schema.json`](../../schemas/sitrep.schema.json); odtworzenie: `grep -n required schemas/sitrep.schema.json`. Wartość `wymagane` oznacza pole z listy `required`, `opcjonalne` - pole z `properties` poza tą listą, `poza kontraktem` - element szablonu bez własności w kontrakcie (kontrakt ma `additionalProperties: false`, więc taki element nie wchodzi do artefaktu JSON).
+
+| Pole szablonu | Własność kontraktu | Obowiązkowość |
+| --- | --- | --- |
+| ID | `id` | wymagane |
+| Status | `status` | wymagane |
+| Identyfikator scenariusza | `operation_id` | wymagane |
+| Okres raportowania | `reporting_period_label` | wymagane |
+| Autor | `author_role` | opcjonalne |
+| Dane syntetyczne | `synthetic` (stała `true`) | wymagane |
+| Położenie | brak | poza kontraktem |
+| Kurs | brak | poza kontraktem |
+| Podsumowanie | `summary` | wymagane |
+| Potwierdzone informacje | `confirmed_items` (element: `statement` wymagane, `source_id` opcjonalne) | opcjonalne |
+| Oceny i hipotezy | `assessments` (element: `hypothesis`, `confidence` wymagane; `falsifier` opcjonalne) | opcjonalne |
+| Luki i rozbieżności | `gaps` | opcjonalne |
+| Postęp | brak | poza kontraktem |
+| Zasoby | brak | poza kontraktem |
+| Działania następcze | `follow_up_actions` | opcjonalne |
+| Źródła | `sources` | opcjonalne |
+
 **Położenie:** etap [ ] · przejazd [ ] · zlecenie cząstkowe [ ]: [jedno zdanie]
 
 **Kurs:** [w granicach zamiaru / korekta: jaka i czemu mieści się w zamiarze / poza zamiarem → czeka rozstrzygnięcie koordynatora]

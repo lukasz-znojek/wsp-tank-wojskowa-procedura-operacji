@@ -17,6 +17,27 @@ Plan niesie **stan** fikcyjnego scenariusza i jest nadpisywany. Historia zdarze�
 | Postęp | [ ] / [ ] | pozycje zaliczone wobec wszystkich; osobno główne, osobno poboczne |
 | Dane syntetyczne | tak | pole obowiązkowe |
 
+**Odwzorowanie na kontrakt danych** - kolumna „Obowiązkowość” odpowiada liście `required` w kontrakcie [`operation.schema.json`](../../schemas/operation.schema.json); odtworzenie: `grep -n required schemas/operation.schema.json`. Wartość `wymagane` oznacza pole z listy `required`, `opcjonalne` - pole z `properties` poza tą listą, `poza kontraktem` - element szablonu bez własności w kontrakcie (kontrakt ma `additionalProperties: false`, więc taki element nie wchodzi do artefaktu JSON).
+
+| Pole szablonu | Własność kontraktu | Obowiązkowość |
+| --- | --- | --- |
+| ID | `id` | wymagane |
+| Nazwa syntetyczna | `title` (nazwa planu jako tekst do 200 znaków) | wymagane |
+| Status | `status` | wymagane |
+| Właściciel | `owner_role` | opcjonalne |
+| Wersja | `version` | wymagane |
+| Przejazd | brak | poza kontraktem |
+| Postęp | brak | poza kontraktem |
+| Dane syntetyczne | `synthetic` (stała `true`) | wymagane |
+| Cel scenariusza | `scenario_goal` | wymagane |
+| Założenia przyjęte | `assumptions` | opcjonalne |
+| Role | `roles` (element: `role`, `label` - oba wymagane w elemencie) | opcjonalne |
+| Etapy | `stages` (element: `ordinal`, `name`, `status` wymagane; `expected_result`, `verification` opcjonalne) | wymagane |
+| Etapy, kolumna „Stan” | `stages[].status` - słownik kontraktu to pięć stanów cyklu życia artefaktu, nie stan pozycji mapy | wymagane w elemencie |
+| Kryteria ukończenia | `completion_criteria` | opcjonalne |
+| Ryzyka i luki | `risks` | opcjonalne |
+| Powiązane artefakty | `related_artifacts` | opcjonalne |
+
 ## Cel scenariusza
 
 **Opis:** [dwa–trzy zdania: co ten scenariusz robi i po co]

@@ -1,0 +1,55 @@
+{
+  "id": "SITREP-ALFA-001",
+  "synthetic": true,
+  "status": "zatwierdzony",
+  "operation_id": "OP-ALFA-001",
+  "reporting_period_label": "scenariusz ALFA, etapy 1-3",
+  "author_role": "Analityk-01",
+  "summary": "Trzy etapy scenariusza ALFA są zaliczone. Plan OP-ALFA-001 jest opublikowany, dziennik zawiera pięć komunikatów, a ten raport zamyka etap trzeci. Na koordynatora nie czeka żadne rozstrzygnięcie. Najbardziej narażona na niepowodzenie jest kompletność powiązań między artefaktami: jedna luka tego rodzaju wystąpiła już w etapie pierwszym.",
+  "confirmed_items": [
+    {
+      "statement": "Plan OP-ALFA-001 zawiera trzy etapy; sprawdzone: tabela etapów planu, trzy wiersze.",
+      "source_id": "OP-ALFA-001"
+    },
+    {
+      "statement": "Dziennik zawiera komunikat MSG-ALFA-001; sprawdzone: wiersz T+00:00 w rejestrze zdarzeń dziennika.",
+      "source_id": "MSG-ALFA-001"
+    },
+    {
+      "statement": "Plan OP-ALFA-001 jest w stanie opublikowany; sprawdzone: metryka planu oraz ostatni wiersz jego historii zmian.",
+      "source_id": "OP-ALFA-001"
+    }
+  ],
+  "assessments": [
+    {
+      "hypothesis": "Przegląd kompletności może ujawnić brak powiązania artefaktu.",
+      "confidence": "prawdopodobne",
+      "falsifier": "Przegląd potwierdza kompletność wszystkich powiązań we wszystkich trzech artefaktach."
+    },
+    {
+      "hypothesis": "Wersja robocza raportu może wymagać doprecyzowania źródła informacji.",
+      "confidence": "niepotwierdzone",
+      "falsifier": "Każde twierdzenie w raporcie wskazuje artefakt źródłowy."
+    }
+  ],
+  "gaps": [
+    "Korzeń: nie ustalono, czy naruszenie WF-5 z etapu pierwszego wynikało z pośpiechu czy z niejasności szablonu.",
+    "Wzorzec: jedno wystąpienie nie pozwala stwierdzić wzorca; przy drugim naruszenie stanie się kandydatem do zmiany szablonu.",
+    "Wykluczenia: sprawdzono i odrzucono przypuszczenie, że kontrakt danych nie wymagał powiązania; kontrakt dopuszcza pole powiązań jako opcjonalne, więc kontrola maszynowa nie mogła tego wykryć.",
+    "Rozbieżność: wymaganie WF-5 traktuje powiązanie jako obowiązkowe, gdy relacja istnieje, a kontrakt danych ma pole powiązań opcjonalne; rozstrzyga model danych: obowiązkowość jest zapisem, kontrola należy do przeglądu."
+  ],
+  "follow_up_actions": [
+    "Czeka na koordynatora: nic.",
+    "Zależności: wszystkie uruchomione.",
+    "Zagrożenie: kolejne naruszenie WF-5 przy następnym scenariuszu; wyzwalacz: prowadzenie etapów niezależnie przez różne osoby, bez przeglądu kompletności powiązań przed przekazaniem artefaktu.",
+    "Następny krok: przy drugim wystąpieniu naruszenia WF-5 rozważyć wyróżnienie sekcji powiązań w szablonie planu operacji."
+  ],
+  "sources": [
+    "OP-ALFA-001",
+    "MSG-ALFA-001",
+    "MSG-ALFA-002",
+    "MSG-ALFA-003",
+    "MSG-ALFA-004",
+    "MSG-ALFA-005"
+  ]
+}

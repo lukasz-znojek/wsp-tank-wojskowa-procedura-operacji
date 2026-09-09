@@ -1,0 +1,61 @@
+{
+  "id": "OP-ALFA-001",
+  "synthetic": true,
+  "title": "Plan scenariusza ALFA",
+  "status": "opublikowany",
+  "version": "1.0.0",
+  "owner_role": "Koordynator-01",
+  "scenario_goal": "Zestaw trzech artefaktów scenariusza - plan, dziennik komunikatów i raport SITREP - jest kompletny, wzajemnie powiązany identyfikatorami i przechodzi kontrolę odpowiednich kontraktów danych. Dowód: python3 scripts/validate_schemas.py kończy się kodem 0, a każdy z trzech artefaktów wskazuje co najmniej jeden powiązany identyfikator.",
+  "assumptions": [
+    "Uczestnicy znają rozdział procedury, szablonu i przykładu; sprawdzone: ADR-004 przeczytany przed startem.",
+    "Trzy etapy wystarczają do pokazania rozdziału faktów i hipotez; sprawdzone: scenariusz przeprowadzony do końca daje raport z obiema sekcjami wypełnionymi."
+  ],
+  "roles": [
+    { "role": "koordynator", "label": "Koordynator-01" },
+    { "role": "autor", "label": "Analityk-01" },
+    { "role": "recenzent", "label": "Recenzent-01" }
+  ],
+  "stages": [
+    {
+      "ordinal": 1,
+      "name": "Przygotowanie planu",
+      "expected_result": "plan OP-ALFA-001 z metryką, celem i trzema etapami",
+      "verification": "plan przechodzi kontrolę operation.schema.json; pole synthetic ma wartość true",
+      "status": "zatwierdzony"
+    },
+    {
+      "ordinal": 2,
+      "name": "Rejestracja komunikatów",
+      "expected_result": "dziennik z pięcioma komunikatami MSG-ALFA-001 do MSG-ALFA-005",
+      "verification": "każdy komunikat ma czas w formacie T+HH:MM, nadawcę, odbiorcę i powiązanie",
+      "status": "zatwierdzony"
+    },
+    {
+      "ordinal": 3,
+      "name": "Opracowanie raportu",
+      "expected_result": "raport SITREP-ALFA-001 z rozdzielonymi faktami i hipotezami",
+      "verification": "każde twierdzenie potwierdzone wskazuje artefakt źródłowy; każda hipoteza ma falsyfikator",
+      "status": "zatwierdzony"
+    }
+  ],
+  "completion_criteria": [
+    "Trzy artefakty scenariusza istnieją i mają wypełnione pola obowiązkowe swoich kontraktów.",
+    "Każdy artefakt wskazuje co najmniej jeden powiązany identyfikator.",
+    "Każde twierdzenie w sekcji informacji potwierdzonych raportu wskazuje artefakt źródłowy.",
+    "Każda hipoteza w raporcie ma poziom pewności i falsyfikator.",
+    "python3 scripts/validate_schemas.py oraz bash scripts/validate_markdown.sh kończą się kodem 0."
+  ],
+  "risks": [
+    "Uczestnik wpisze twierdzenie bez źródła do sekcji informacji potwierdzonych; wyzwalacz: pośpiech przy etapie 3; obala: przegląd potwierdza, że każde twierdzenie potwierdzone wskazuje artefakt źródłowy.",
+    "Komunikat dostanie czas bezwzględny zamiast etykiety względnej; wyzwalacz: odruch zapisu daty; obala: kontrola wzorca ^T\\+[0-9]{2}:[0-9]{2}$ we wszystkich pięciu komunikatach.",
+    "Powiązania między artefaktami zostaną pominięte; wyzwalacz: etapy prowadzone niezależnie przez różne osoby; obala: przegląd kompletności potwierdza powiązanie w każdym z trzech artefaktów."
+  ],
+  "related_artifacts": [
+    "SITREP-ALFA-001",
+    "MSG-ALFA-001",
+    "MSG-ALFA-002",
+    "MSG-ALFA-003",
+    "MSG-ALFA-004",
+    "MSG-ALFA-005"
+  ]
+}

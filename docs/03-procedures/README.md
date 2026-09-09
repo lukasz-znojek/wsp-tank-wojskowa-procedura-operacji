@@ -8,6 +8,15 @@ Wszystkie procedury dotyczą wyłącznie fikcyjnych scenariuszy szkoleniowych.
 
 Każdy plik w tym katalogu poza `README.md` musi zawierać dokładnie dziewięć sekcji: Cel, Zakres, Role, Dane wejściowe, Kroki, Punkty decyzyjne, Dane wyjściowe, Wyjątki, Powiązane artefakty. Kompletność sprawdza [`scripts/validate_markdown.sh`](../../scripts/validate_markdown.sh) i brak choćby jednej sekcji kończy walidację kodem niezerowym.
 
+## Zawartość katalogu
+
+Katalog zawiera wyłącznie osiem plików: `README.md`, `komenda.md`, `lacznosc.md`, `meldunek.md`, `przejazd.md`, `rozpoznanie.md`, `zwiad.md` i `think-tank.md`. Odtworzenie listy: `find docs/03-procedures -maxdepth 1 -type f -name '*.md' -printf '%f\n' | sort`. Każdy inny dokument - notatka, przykład, szablon, opis decyzji - należy do odpowiedniego innego katalogu dokumentacji: [szablony](../04-templates/README.md), [przykłady](../../examples/), [architektura i decyzje](../02-architecture/) albo [materiały referencyjne](../05-reference/README.md).
+
+Dwie rzeczy trzeba tu odróżnić:
+
+- **Blokada techniczna.** [`scripts/validate_markdown.sh`](../../scripts/validate_markdown.sh) obejmuje każdy plik Markdown znaleziony w tym katalogu poza `README.md` i wymaga od niego dokładnie dziewięciu sekcji. Plik o innej strukturze dodany do tego katalogu kończy walidację kodem niezerowym - to mechanizm, nie zapis.
+- **Zasada organizacyjna.** Zamknięta lista plików powyżej jest zapisem w tym README. Sama nie blokuje CI: walidator nie porównuje zawartości katalogu z listą, więc dokument o dziewięciu prawidłowych sekcjach, lecz niebędący procedurą, przejdzie kontrolę maszynową. Wyłapuje go przegląd zmiany, nie skrypt.
+
 ## Mapa procedur
 
 | Procedura | Główny rezultat | Powiązany szablon |

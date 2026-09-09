@@ -19,6 +19,27 @@ Szablon opisuje **format zapisu jednego komunikatu** wymienionego między rolami
 | Stan artefaktu | szkic / do-przegladu / zatwierdzony / opublikowany / odrzucony | patrz [model stanów](../02-architecture/model-stanow.md) |
 | Dane syntetyczne | tak | pole obowiązkowe; wartość inna niż `tak` unieważnia komunikat |
 
+**Odwzorowanie na kontrakt danych** - kolumna „Obowiązkowość” odpowiada liście `required` w kontrakcie [`message.schema.json`](../../schemas/message.schema.json); odtworzenie: `grep -n required schemas/message.schema.json`. Wartość `wymagane` oznacza pole z listy `required`, `opcjonalne` - pole z `properties` poza tą listą, `poza kontraktem` - element szablonu bez własności w kontrakcie (kontrakt ma `additionalProperties: false`, więc taki element nie wchodzi do artefaktu JSON).
+
+| Pole szablonu | Własność kontraktu | Obowiązkowość |
+| --- | --- | --- |
+| Identyfikator komunikatu | `id` | wymagane |
+| Czas | `sent_at_label` | opcjonalne |
+| Nadawca | `sender_role` | wymagane |
+| Odbiorca | `recipient_role` | wymagane |
+| Kanał | `channel` | opcjonalne |
+| Punkt odniesienia | brak | poza kontraktem |
+| Temat | `subject` | wymagane |
+| Poziom pewności | `confidence` | opcjonalne |
+| Stan artefaktu | `status` | wymagane |
+| Dane syntetyczne | `synthetic` (stała `true`) | wymagane |
+| Treść | `body` | wymagane |
+| Powiązane artefakty (plan operacji, artefakt źródłowy, wpis BMS) | `related_artifacts` | opcjonalne |
+| Potwierdzono | `acknowledged` | opcjonalne |
+| Kto potwierdził | brak | poza kontraktem |
+| Uwagi (potwierdzenie odbioru) | brak | poza kontraktem |
+| Historia zmian | brak | poza kontraktem |
+
 ## Treść
 
 [ ]

@@ -1,0 +1,17 @@
+{
+  "id": "MSG-ALFA-001",
+  "synthetic": true,
+  "status": "zatwierdzony",
+  "sender_role": "Koordynator-01",
+  "recipient_role": "Analityk-01",
+  "sent_at_label": "T+00:00",
+  "channel": "symulowany-tekstowy",
+  "subject": "Zlecenie utworzenia planu scenariusza ALFA",
+  "body": "Koordynator-01 zleca Analitykowi-01 utworzenie planu scenariusza ALFA według szablonu planu operacji. Plan otrzymuje identyfikator OP-ALFA-001 i po wypełnieniu metryki, celu i trzech etapów przechodzi do przeglądu. Punkt odniesienia scenariusza: Punkt-A.",
+  "confidence": "potwierdzone",
+  "acknowledged": true,
+  "related_artifacts": [
+    "OP-ALFA-001",
+    "SITREP-ALFA-001"
+  ]
+}

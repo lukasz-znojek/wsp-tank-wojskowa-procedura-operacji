@@ -31,6 +31,28 @@ Zgłoszenie koordynatora w widoku **nie zmienia stanu scenariusza samo z siebie*
 | Poziom pewności | potwierdzone / prawdopodobne / niepotwierdzone | `potwierdzone` wymaga wskazanego źródła w sekcji niżej |
 | Dane syntetyczne | tak | pole obowiązkowe; wartość inna niż `tak` unieważnia wpis |
 
+**Odwzorowanie na kontrakt danych** - kolumna „Obowiązkowość” odpowiada liście `required` w kontrakcie [`bms-event.schema.json`](../../schemas/bms-event.schema.json); odtworzenie: `grep -n required schemas/bms-event.schema.json`. Wartość `wymagane` oznacza pole z listy `required`, `opcjonalne` - pole z `properties` poza tą listą, `poza kontraktem` - element szablonu bez własności w kontrakcie (kontrakt ma `additionalProperties: false`, więc taki element nie wchodzi do artefaktu JSON).
+
+| Pole szablonu | Własność kontraktu | Obowiązkowość |
+| --- | --- | --- |
+| ID | `id` | wymagane |
+| Tytuł | `title` | wymagane |
+| Status | `status` | wymagane |
+| Autor | `author_role` | opcjonalne |
+| Czas utworzenia | `created_at` | opcjonalne |
+| Czas zdarzenia | `event_time_label` | opcjonalne |
+| Typ | `event_type` | wymagane |
+| Priorytet | `priority` | opcjonalne |
+| Poziom pewności | `confidence` | wymagane |
+| Dane syntetyczne | `synthetic` (stała `true`) | wymagane |
+| Opis | `description` | wymagane |
+| Źródło | `sources` | opcjonalne |
+| Powiązany artefakt | `related_artifacts` | opcjonalne |
+| Punkt odniesienia | `reference_points` | opcjonalne |
+| Potwierdzono | `acknowledged` | opcjonalne |
+| Kto potwierdził | brak | poza kontraktem |
+| Uwagi (potwierdzenie odbioru) | brak | poza kontraktem |
+
 ## Opis
 
 [ ]
