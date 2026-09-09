@@ -12,9 +12,9 @@ Dokumentacja jest ukończona: struktura, treść, przykłady i kontrola zgodnoś
 | Procedury | siedem procedur, dokładnie dziewięć wymaganych sekcji w każdej | `bash scripts/validate_markdown.sh` → 7 z 7, kod 0 |
 | Szablony | pięć szablonów, każdy z instrukcją wypełniania i odnośnikiem do kontraktu albo jawnym stwierdzeniem, że kontraktu nie ma | tabela w [`docs/04-templates/README.md`](../04-templates/README.md) |
 | Kontrakty danych | cztery kontrakty JSON Schema Draft 2020-12 | `python3 scripts/validate_schemas.py` → 4 schematy, kod 0 |
-| Przykłady | trzy przykłady syntetyczne, spójne identyfikatorami, rolami i linią zdarzeń | wspólne `OP-ALFA-001`, `MSG-ALFA-001` … `MSG-ALFA-005`, `SITREP-ALFA-001` |
+| Przykłady | cztery przykłady syntetyczne, każdy w postaci Markdown i JSON, spójne identyfikatorami, rolami i linią zdarzeń | wspólne `OP-ALFA-001`, `BMS-ALFA-001`, `MSG-ALFA-001` … `MSG-ALFA-005`, `SITREP-ALFA-001`; `python3 scripts/validate_schemas.py` z biblioteką `jsonschema` → 4 przykłady, kod 0 |
 | Dokumenty produktowe | wymagania `WF-1` … `WF-7` i `WN-1` … `WN-4`, cztery scenariusze, macierz uprawnień, listy kontrolne | [`docs/01-product/`](../01-product/README.md) |
-| Architektura i decyzje | pięć elementów architektury, model danych, model stanów, integracje, cztery ADR-y | [`docs/02-architecture/`](../02-architecture/README.md) |
+| Architektura i decyzje | pięć elementów architektury, model danych, model stanów, integracje, pięć ADR-ów | [`docs/02-architecture/`](../02-architecture/README.md) |
 | Governance | klasyfikacja informacji, polityka wersjonowania, polityka zmian procedur | [`docs/06-governance/`](../06-governance/README.md) |
 | Walidacja automatyczna | działa dla pull requestów i gałęzi domyślnej | [`.github/workflows/validate-docs.yml`](../../.github/workflows/validate-docs.yml) |
 | Materiały źródłowe | przeniesione i odpersonalizowane; katalog źródłowy usunięty po kontroli plik po pliku | [rejestr pochodzenia](../05-reference/sources.md) |
@@ -40,12 +40,12 @@ Ryzyka nie są zadaniami do wykonania: występują trwale i każde ma kontrolę,
 | --- | --- | --- | --- |
 | 1 | Wprowadzenie danych niedopuszczonych: osobowych, lokalizacyjnych, operacyjnych, sekretów | kontrakty danych nie mają pól przyjmujących te dane; wzorce wymuszają czas względny i punkt abstrakcyjny; walidator odrzuca ścieżki bezwzględne; kontrola ludzka wobec [klasyfikacji informacji](../06-governance/klasyfikacja-informacji.md) jako kryterium przeglądu | częściowo mechanizm, częściowo zapis |
 | 2 | Zerwanie odnośników przy zmianie nazwy albo przeniesieniu pliku | przegląd odnośników względnych jako kryterium akceptacji; odnośniki sprawdzane przy każdej zmianie | zapis |
-| 3 | Rozjazd dokumentacji i schematów: szablon opisuje inne pola niż kontrakt | wymóg zmiany szablonu, kontraktu i przykładu w jednej zmianie; ocena wpływu na cztery obszary w [polityce zmian procedur](../06-governance/polityka-zmian-procedur.md) | zapis |
-| 4 | Pozostawienie tekstu zastępczego albo pustej sekcji | walidator odrzuca teksty zastępcze w plikach Markdown | mechanizm |
+| 3 | Rozjazd dokumentacji i schematów: szablon opisuje inne pola niż kontrakt | wymóg zmiany szablonu, kontraktu i przykładu w jednej zmianie; ocena wpływu na cztery obszary w [polityce zmian procedur](../06-governance/polityka-zmian-procedur.md); przykłady JSON walidowane wobec kontraktów w automatycznej walidacji; tabela odwzorowania pól na kontrakt w każdym szablonie | częściowo mechanizm, częściowo zapis |
+| 4 | Pozostawienie tekstu zastępczego albo pustej sekcji | walidator odrzuca teksty zastępcze i puste sekcje w plikach Markdown | mechanizm |
 | 5 | Niezgodna wstecz zmiana kontraktu wprowadzona nieświadomie | obowiązkowa ocena zgodności wstecz wg [polityki wersjonowania](../06-governance/polityka-wersjonowania.md); tabela trzech wyników oceny | zapis |
 | 6 | Zmiana stanu artefaktu przez rolę bez uprawnienia albo przejściem niedozwolonym | [macierz uprawnień](../01-product/role-i-uprawnienia.md) i tabela przejść w [modelu stanów](../02-architecture/model-stanow.md) | zapis |
 
-Ryzyka 2, 3, 5 i 6 są ograniczone wyłącznie zapisem. Zapis jest kontekstem, nie blokadą: wykonawca może go pominąć bez żadnego sygnału. Jedyną blokadą techniczną są walidatory i automatyczna walidacja.
+Ryzyka 2, 5 i 6 są ograniczone wyłącznie zapisem, ryzyko 3 tylko częściowo mechanizmem. Zapis jest kontekstem, nie blokadą: wykonawca może go pominąć bez żadnego sygnału. Jedyną blokadą techniczną są walidatory i automatyczna walidacja.
 
 ## Ustalenia przeniesione z fazy poprzedniej
 

@@ -7,9 +7,9 @@ W materiałach tego projektu występują **dwa odrębne słowniki stanów**. Mie
 | Pojęcie | Słownik | Czego dotyczy | Gdzie obowiązuje |
 | --- | --- | --- | --- |
 | **Cykl życia artefaktu** | `szkic` → `do-przegladu` → `zatwierdzony` → `opublikowany`, plus `odrzucony` | dokument jako całość: plan operacji, wpis BMS, komunikat, SITREP | kontrakty w [`schemas/`](../../schemas/), [szablony](../04-templates/README.md), cała ta dokumentacja |
-| **Stan pozycji mapy** | `niezaliczone` → `w toku` → `zielone` → `odrzucone` | jeden wiersz mapy etapów wewnątrz planu operacji | materiał źródłowy; w tej dokumentacji opisany, ale **nieobjęty kontraktami danych** |
+| **Stan pozycji mapy** | `niezaliczone` → `w toku` → `zielone` → `odrzucone` | jeden wiersz mapy etapów wewnątrz planu operacji | pole `stages[].status` w [`operation.schema.json`](../../schemas/operation.schema.json), [szablon planu operacji](../04-templates/plan-operacji.md); zapis maszynowy stanu „w toku” to `w-toku` |
 
-**Rozstrzygnięcie:** oba słowniki pozostają, jako dwa różne pojęcia. Kontrakty JSON Schema opisują **wyłącznie cykl życia artefaktu**. Stan pozycji mapy jest polem wewnątrz planu operacji i nie ma własnego kontraktu.
+**Rozstrzygnięcie:** oba słowniki pozostają, jako dwa różne pojęcia, i oba są objęte kontraktem planu operacji w dwóch różnych polach. Pole `status` planu przyjmuje wyłącznie cykl życia artefaktu; pole `stages[].status` przyjmuje wyłącznie stan pozycji mapy. Kontrakt odrzuca wartość jednego słownika wpisaną w pole drugiego - patrz [ADR-005](decyzje/adr-005-stan-pozycji-w-kontrakcie.md). Stan pozycji nie jest osobnym artefaktem i nie ma własnego kontraktu: jest polem wewnątrz planu.
 
 Trzecią, jeszcze inną rzeczą jest **postęp** — podawany jako „zaliczone wobec wszystkich". Postęp nie jest stanem, jest liczbą wyliczoną ze stanów pozycji. Stan pozycji, status całego scenariusza i postęp są trzema różnymi rzeczami.
 
@@ -42,7 +42,7 @@ stateDiagram-v2
 | --- | --- | --- | --- |
 | — | `szkic` | utworzenie artefaktu wg szablonu | autor |
 | `szkic` | `do-przegladu` | wypełnione wszystkie pola obowiązkowe szablonu | autor |
-| `do-przegladu` | `zatwierdzony` | przegląd bez zastrzeżeń, kryteria akceptacji spełnione | recenzent |
+| `do-przegladu` | `zatwierdzony` | przegląd recenzenta zamknięty bez zastrzeżeń, kryteria akceptacji spełnione | koordynator |
 | `do-przegladu` | `szkic` | zastrzeżenia wymagające poprawki | recenzent |
 | `zatwierdzony` | `opublikowany` | walidacja przechodzi, powiązane artefakty spójne | koordynator |
 | `szkic` | `odrzucony` | wycofanie przed przeglądem | autor albo koordynator |
@@ -73,13 +73,13 @@ Odrzucenie jest **rozstrzygnięciem, nie stratą**. Artefakt odrzucony pozostaje
 
 ## Kto zmienia stan
 
-Uprawnienia do zmiany stanu wynikają z [macierzy uprawnień](../01-product/role-i-uprawnienia.md). Zasada nadrzędna: **o przejściu do stanu końcowego nie orzeka ten, kto artefakt wytworzył.** Autor nie zatwierdza własnego artefaktu i nie publikuje go.
+Uprawnienia do zmiany stanu wynikają z [macierzy uprawnień](../01-product/role-i-uprawnienia.md). Zasada nadrzędna: **o przejściu do stanu końcowego nie orzeka ten, kto artefakt wytworzył.** Autor nie zatwierdza własnego artefaktu i nie publikuje go. Recenzent wykonuje przegląd i może zwrócić artefakt do szkicu albo odrzucić go z uzasadnieniem, lecz nie zatwierdza: zatwierdzenie i publikacja należą do koordynatora.
 
 Wyjątek dotyczy wyłącznie przejścia `szkic` → `odrzucony`: autor może wycofać własny szkic, bo nie przeszedł on jeszcze przez żaden przegląd.
 
 ## Zapis historii zmian
 
-Każda zmiana stanu wchodzi wierszem do [dziennika operacyjnego](../04-templates/dziennik-operacyjny.md): czas, identyfikator artefaktu, zdarzenie, nowy status, autor zmiany, uwagi.
+Każda zmiana stanu jest zapisywana w dwóch miejscach. Artefakt niesie własną tabelę „Historia zmian”: poprzedni stan, nowy stan, rola decyzyjna, uzasadnienie - to jest zapis, którego wymaga `WF-6`. [Dziennik operacyjny](../04-templates/dziennik-operacyjny.md) rejestruje tę samą zmianę jednym wierszem: czas, identyfikator artefaktu, zdarzenie, nowy status, autor zmiany, uwagi.
 
 Historia jest wyłącznie dopisywana. Wpis raz zapisany nie jest poprawiany — błąd prostuje wpis następny. Rozjazd między statusem w artefakcie a ostatnim wpisem w dzienniku jest **faktem do wypisania** przy przeglądzie poobserwacyjnym, nie rozbieżnością do wygładzenia.
 

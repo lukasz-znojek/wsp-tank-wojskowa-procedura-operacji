@@ -62,9 +62,9 @@ Realizacja na tym etapie: plan operacji i dziennik operacyjny jako pliki w repoz
 
 **Rola:** sprawdza maszynowo to, co da się sprawdzić maszynowo, i kończy pracę kodem niezerowym przy naruszeniu.
 
-**Przyjmuje:** pliki kontraktów danych oraz pliki procedur.
+**Przyjmuje:** pliki kontraktów danych, przykłady JSON oraz pliki Markdown, w tym procedury.
 
-**Wydaje:** wynik binarny wraz z listą naruszeń: dla kontraktów — poprawność JSON, obecność `$schema`, `title`, `type`, `properties`, `required` i typ główny `object`; dla procedur — obecność wszystkich dziewięciu sekcji.
+**Wydaje:** wynik binarny wraz z listą naruszeń: dla kontraktów — poprawność JSON, obecność `$schema`, `title`, `type`, `properties`, `required` i typ główny `object`; dla przykładów JSON — zgodność z odpowiednim kontraktem, gdy dostępna jest biblioteka `jsonschema` (automatyczna walidacja wymaga jej jawnie); dla procedur — obecność wszystkich dziewięciu sekcji; dla każdego pliku Markdown — brak tekstu zastępczego, ścieżek bezwzględnych i pustych sekcji.
 
 **Styka się z:** automatyczną walidacją w [`.github/workflows/validate-docs.yml`](../../.github/workflows/validate-docs.yml), uruchamianą dla każdego pull requesta i przy zmianie gałęzi domyślnej.
 

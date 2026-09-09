@@ -1,0 +1,22 @@
+{
+  "id": "BMS-ALFA-001",
+  "synthetic": true,
+  "title": "Plan OP-ALFA-001 opublikowany po kontroli kontraktu",
+  "status": "zatwierdzony",
+  "author_role": "Analityk-01",
+  "event_time_label": "T+01:20",
+  "event_type": "zmiana-statusu",
+  "priority": "niski",
+  "confidence": "potwierdzone",
+  "description": "Plan OP-ALFA-001 przeszedł ze stanu zatwierdzony do stanu opublikowany. Zmianę wykonał Koordynator-01 po kontroli kontraktu zakończonej kodem 0; źródłem wpisu jest komunikat MSG-ALFA-005 z rejestru zdarzeń dziennika.",
+  "reference_points": [
+    "Punkt-A"
+  ],
+  "sources": [
+    "MSG-ALFA-005"
+  ],
+  "related_artifacts": [
+    "OP-ALFA-001"
+  ],
+  "acknowledged": true
+}

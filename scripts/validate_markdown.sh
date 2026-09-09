@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
 # Kontrola spójności dokumentacji Markdown.
 #
-# Sprawdza trzy rzeczy:
+# Sprawdza cztery rzeczy:
 #   1. każda procedura z docs/03-procedures/ (poza README.md) zawiera dokładnie
 #      dziewięć wymaganych sekcji, w wymaganej kolejności i bez dodatkowych
 #      nagłówków tego poziomu;
 #   2. żaden plik .md nie zawiera tekstu zastępczego;
-#   3. żaden plik .md nie zawiera bezwzględnej ścieżki systemu plików.
+#   3. żaden plik .md nie zawiera bezwzględnej ścieżki systemu plików;
+#   4. żaden plik .md nie zawiera pustej sekcji: nagłówka, po którym (poza
+#      pustymi liniami) następuje od razu nagłówek tego samego albo wyższego
+#      poziomu albo koniec pliku. Nagłówki wewnątrz bloków kodu są pomijane.
 #
 # Kod wyjścia: 0 gdy wszystko przeszło, 1 gdy wykryto naruszenie.
 
@@ -115,6 +118,49 @@ if [[ ${path_hits} -gt 0 ]]; then
   echo "Ścieżki bezwzględne: ${path_hits} wystąpień" >&2
 else
   echo "Ścieżki bezwzględne: 0 wystąpień"
+fi
+
+# --- 4. Puste sekcje ---
+#
+# Sekcja jest pusta, gdy po jej nagłówku - z pominięciem pustych linii - stoi
+# nagłówek tego samego albo wyższego poziomu (mniej lub tyle samo znaków '#')
+# albo kończy się plik. Nagłówek, po którym następuje podsekcja, nie jest pusty.
+# Szablony zgłoszeń w .github/ISSUE_TEMPLATE/ są formularzami: ich sekcje mają
+# być puste do chwili wypełnienia, dlatego ta kontrola je pomija.
+
+echo
+empty_hits=0
+while IFS= read -r hit; do
+  echo "BŁĄD pusta sekcja: ${hit}" >&2
+  empty_hits=$((empty_hits + 1))
+done < <(find "${repo_root}" -type f -name '*.md' \
+           -not -path '*/.git/*' -not -path '*/.github/ISSUE_TEMPLATE/*' | sort \
+           | while IFS= read -r md; do
+               awk -v file="${md#"${repo_root}/"}" '
+                 function flush_if_empty(next_level) {
+                   if (open_line && !has_content && (next_level == 0 || next_level <= open_level)) {
+                     printf "%s:%d: %s\n", file, open_line, open_text
+                   }
+                 }
+                 /^```/ { in_fence = !in_fence; has_content = 1; next }
+                 in_fence { has_content = 1; next }
+                 /^#{1,6} / {
+                   level = length($0) - length(substr($0, index($0, " ")))
+                   flush_if_empty(level)
+                   open_line = NR; open_level = level; open_text = $0; has_content = 0
+                   next
+                 }
+                 /^[[:space:]]*$/ { next }
+                 { has_content = 1 }
+                 END { flush_if_empty(0) }
+               ' "${md}"
+             done)
+
+if [[ ${empty_hits} -gt 0 ]]; then
+  failed=$((failed + empty_hits))
+  echo "Puste sekcje: ${empty_hits} wystąpień" >&2
+else
+  echo "Puste sekcje: 0 wystąpień"
 fi
 
 if [[ ${failed} -gt 0 ]]; then

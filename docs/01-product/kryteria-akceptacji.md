@@ -40,7 +40,7 @@ Kryterium musi dać się **sprawdzić**, nie ocenić. Odpowiedź na każdą pozy
 | 2 | Obecne są `$schema`, `title`, `type`, `properties`, `required` | `python3 scripts/validate_schemas.py` |
 | 3 | Typ główny to `object`, a `additionalProperties` ma wartość `false` | przegląd schematu |
 | 4 | Pole oznaczające dane syntetyczne jest wymagane i ma wartość `true` | przegląd schematu |
-| 5 | Słownik statusów obejmuje dokładnie pięć dopuszczonych wartości | [model stanów](../02-architecture/model-stanow.md) |
+| 5 | Słownik statusu artefaktu obejmuje dokładnie pięć dopuszczonych wartości, a słownik stanu pozycji mapy w planie operacji dokładnie cztery | [model stanów](../02-architecture/model-stanow.md), [ADR-005](../02-architecture/decyzje/adr-005-stan-pozycji-w-kontrakcie.md) |
 | 6 | Brak pól przyjmujących współrzędne, dane osobowe i dane operacyjne | przegląd schematu |
 | 7 | Zgodność wstecz oceniona i nazwana | [polityka wersjonowania](../06-governance/polityka-wersjonowania.md) |
 | 8 | Szablon i przykład zaktualizowane wraz ze schematem | [`docs/04-templates/`](../04-templates/README.md), [`examples/`](../../examples/) |

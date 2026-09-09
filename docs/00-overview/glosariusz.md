@@ -66,14 +66,14 @@ Cztery role projektowe i ich zakresy opisuje [role i uprawnienia](../01-product/
 
 **Dane syntetyczne** — dane w całości wymyślone dla celów szkoleniowych, nieodnoszące się do żadnych rzeczywistych podmiotów, osób, miejsc ani zdarzeń. Wszystkie dane w tym repozytorium są syntetyczne — patrz [ograniczenia i zasady](ograniczenia-i-zasady.md).
 
-**Walidacja** — maszynowa kontrola spójności: [`scripts/validate_schemas.py`](../../scripts/validate_schemas.py) dla kontraktów danych i [`scripts/validate_markdown.sh`](../../scripts/validate_markdown.sh) dla kompletności sekcji procedur. Walidacja jest jedyną blokadą techniczną w tym repozytorium; pozostałe reguły są zapisem.
+**Walidacja** — maszynowa kontrola spójności: [`scripts/validate_schemas.py`](../../scripts/validate_schemas.py) dla struktury kontraktów danych i zgodności przykładów JSON z kontraktami oraz [`scripts/validate_markdown.sh`](../../scripts/validate_markdown.sh) dla kompletności sekcji procedur, braku tekstu zastępczego, braku ścieżek bezwzględnych i braku pustych sekcji. Walidacja jest jedyną blokadą techniczną w tym repozytorium; pozostałe reguły są zapisem.
 
 ## Terminy sporne
 
 | Termin | Strona A | Strona B | Wersja obowiązująca |
 | --- | --- | --- | --- |
 | Rozwinięcie skrótu BMS | „Battle Management System" — [`README.md`](../../README.md) | „Battlefield Management System" — materiał źródłowy | **Battle Management System**. Wariant źródłowy jest historyczny i nie należy go wprowadzać do nowych dokumentów. |
-| Słownik stanów | stan pozycji mapy: `niezaliczone → w toku → zielone → odrzucone` | cykl życia artefaktu: `szkic → do-przegladu → zatwierdzony → opublikowany`, plus `odrzucony` | **Oba, jako dwa odrębne pojęcia.** Kontrakty w `schemas/` opisują wyłącznie cykl życia artefaktu — patrz [model stanów](../02-architecture/model-stanow.md). |
+| Słownik stanów | stan pozycji mapy: `niezaliczone → w toku → zielone → odrzucone` | cykl życia artefaktu: `szkic → do-przegladu → zatwierdzony → opublikowany`, plus `odrzucony` | **Oba, jako dwa odrębne pojęcia.** Kontrakt planu operacji trzyma je w dwóch polach: `status` dla cyklu życia artefaktu, `stages[].status` dla stanu pozycji (zapis maszynowy `w-toku`) - patrz [model stanów](../02-architecture/model-stanow.md) i [ADR-005](../02-architecture/decyzje/adr-005-stan-pozycji-w-kontrakcie.md). |
 | Nazwa środowiska i ramy organizacyjnej | sugerowana przez nazwę katalogu i materiał źródłowy | nieustalona w dokumentacji | **`[do potwierdzenia]`.** Nazw podmiotów, klientów i ram nie wprowadza się jako domysłu. |
 
 Rejestr rozbieżności wraz z dokumentami rozstrzygającymi: [pochodzenie materiałów](../05-reference/sources.md).

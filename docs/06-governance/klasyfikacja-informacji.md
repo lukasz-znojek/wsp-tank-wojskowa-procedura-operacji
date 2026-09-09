@@ -4,7 +4,7 @@ Dwie listy poniżej są **rozłączne**. Materiał, który nie należy do pierws
 
 ## Materiały dopuszczone
 
-- Dane syntetyczne z zamkniętego zestawu oznaczeń: `ALFA`, `BRAVO`, `Punkt-A`, `Punkt-B`, `Koordynator-01`, `Analityk-01`, `Recenzent-01`, `OP-ALFA-001`, `SITREP-ALFA-001`, `MSG-ALFA-001` … `MSG-ALFA-005`.
+- Dane syntetyczne z zamkniętego zestawu oznaczeń: `ALFA`, `BRAVO`, `Punkt-A`, `Punkt-B`, `Koordynator-01`, `Analityk-01`, `Recenzent-01`, `OP-ALFA-001`, `BMS-ALFA-001`, `SITREP-ALFA-001`, `MSG-ALFA-001` … `MSG-ALFA-005`.
 - Dokumentacja procesu: procedury, opisy architektury pojęciowej, modele danych i stanów, zapisy decyzji.
 - Abstrakcyjne identyfikatory zgodne z wzorcem `^[A-Z0-9-]+$` oraz oznaczenia ról wg wzorca `^[A-Za-z0-9-]+$`.
 - Puste szablony wraz z instrukcjami wypełniania.

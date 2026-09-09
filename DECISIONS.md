@@ -8,3 +8,4 @@ Ten plik jest indeksem decyzji architektonicznych i organizacyjnych. Pełne uzas
 | ADR-002 | Markdown jako źródło prawdy dla procedur i szablonów | Zaakceptowana |
 | ADR-003 | JSON Schema dla artefaktów wymiany danych | Planowana |
 | ADR-004 | Rozdzielenie procedury, szablonu i przykładu | Zaakceptowana |
+| ADR-005 | Stan pozycji mapy etapów w kontrakcie planu operacji | Zaakceptowana |

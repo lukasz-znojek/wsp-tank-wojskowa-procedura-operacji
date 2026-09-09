@@ -22,8 +22,11 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Walidacja JSON Schema
-        run: python3 scripts/validate_schemas.py
+      - name: Instalacja biblioteki jsonschema
+        run: python3 -m pip install --quiet jsonschema==4.23.0
+
+      - name: Walidacja JSON Schema i przykładów
+        run: python3 scripts/validate_schemas.py --require-jsonschema
 
       - name: Walidacja procedur Markdown
         run: bash scripts/validate_markdown.sh

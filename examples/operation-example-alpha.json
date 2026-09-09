@@ -21,21 +21,21 @@
       "name": "Przygotowanie planu",
       "expected_result": "plan OP-ALFA-001 z metryką, celem i trzema etapami",
       "verification": "plan przechodzi kontrolę operation.schema.json; pole synthetic ma wartość true",
-      "status": "zatwierdzony"
+      "status": "zielone"
     },
     {
       "ordinal": 2,
       "name": "Rejestracja komunikatów",
       "expected_result": "dziennik z pięcioma komunikatami MSG-ALFA-001 do MSG-ALFA-005",
       "verification": "każdy komunikat ma czas w formacie T+HH:MM, nadawcę, odbiorcę i powiązanie",
-      "status": "zatwierdzony"
+      "status": "zielone"
     },
     {
       "ordinal": 3,
       "name": "Opracowanie raportu",
       "expected_result": "raport SITREP-ALFA-001 z rozdzielonymi faktami i hipotezami",
       "verification": "każde twierdzenie potwierdzone wskazuje artefakt źródłowy; każda hipoteza ma falsyfikator",
-      "status": "zatwierdzony"
+      "status": "zielone"
     }
   ],
   "completion_criteria": [

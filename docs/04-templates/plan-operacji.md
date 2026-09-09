@@ -33,7 +33,7 @@ Plan niesie **stan** fikcyjnego scenariusza i jest nadpisywany. Historia zdarze�
 | Założenia przyjęte | `assumptions` | opcjonalne |
 | Role | `roles` (element: `role`, `label` - oba wymagane w elemencie) | opcjonalne |
 | Etapy | `stages` (element: `ordinal`, `name`, `status` wymagane; `expected_result`, `verification` opcjonalne) | wymagane |
-| Etapy, kolumna „Stan” | `stages[].status` - słownik kontraktu to pięć stanów cyklu życia artefaktu, nie stan pozycji mapy | wymagane w elemencie |
+| Etapy, kolumna „Stan” | `stages[].status` - słownik stanu pozycji mapy: `niezaliczone`, `w-toku` (zapis maszynowy stanu „w toku”), `zielone`, `odrzucone`; odrębny od cyklu życia artefaktu w polu `status` planu | wymagane w elemencie |
 | Kryteria ukończenia | `completion_criteria` | opcjonalne |
 | Ryzyka i luki | `risks` | opcjonalne |
 | Powiązane artefakty | `related_artifacts` | opcjonalne |
@@ -91,10 +91,12 @@ Mapa etapów: pozycje główne w kolejności zależności, potem pozycje poboczn
 
 | # | Etap | Rezultat | Sposób sprawdzenia | Stan |
 | --- | --- | --- | --- | --- |
-| 1 |  |  |  | szkic |
-| P1 |  |  |  | szkic |
+| 1 |  |  |  | niezaliczone |
+| P1 |  |  |  | niezaliczone |
 
 Pozycja bez wypełnionej kolumny „sposób sprawdzenia" nie wchodzi do mapy.
+
+Kolumna „Stan” używa słownika stanu pozycji mapy: `niezaliczone` → `w toku` → `zielone`, plus `odrzucone`. To słownik odrębny od cyklu życia artefaktu, którym opisany jest status całego planu - patrz [model stanów](../02-architecture/model-stanow.md) i [ADR-005](../02-architecture/decyzje/adr-005-stan-pozycji-w-kontrakcie.md). W kontrakcie stan „w toku” ma zapis `w-toku`.
 
 ## Kryteria ukończenia
 

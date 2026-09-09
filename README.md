@@ -47,7 +47,7 @@ python3 scripts/validate_schemas.py
 bash scripts/validate_markdown.sh
 ```
 
-Oba polecenia uruchamia także workflow [`validate-docs`](.github/workflows/validate-docs.yml) dla każdego pull requesta oraz przy zmianie gałęzi `main`.
+Pierwszy skrypt sprawdza strukturę kontraktów, a gdy dostępna jest biblioteka `jsonschema`, waliduje też przykłady JSON z `examples/` wobec kontraktów; bez biblioteki pomija ten krok z komunikatem. Drugi sprawdza sekcje procedur, tekst zastępczy, ścieżki bezwzględne i puste sekcje. Oba polecenia uruchamia także workflow [`validate-docs`](.github/workflows/validate-docs.yml) dla każdego pull requesta oraz przy zmianie gałęzi `main`; workflow instaluje `jsonschema` i uruchamia pierwszy skrypt z opcją `--require-jsonschema`, więc tam brak walidacji przykładów kończy się błędem.
 
 ## Zasady bezpieczeństwa
 
@@ -57,7 +57,7 @@ Oba polecenia uruchamia także workflow [`validate-docs`](.github/workflows/vali
 
 ## Stan treści
 
-Dokumentacja jest ukończona: struktura, treść, przykłady i kontrola zgodności. Siedem procedur, pięć szablonów, cztery kontrakty danych, cztery zapisy ADR, trzy przykłady syntetyczne oraz dokumenty produktowe, architektoniczne i governance.
+Dokumentacja jest ukończona: struktura, treść, przykłady i kontrola zgodności. Siedem procedur, pięć szablonów, cztery kontrakty danych, pięć zapisów ADR, cztery przykłady syntetyczne (każdy w postaci Markdown i JSON) oraz dokumenty produktowe, architektoniczne i governance.
 
 Pochodzenie materiałów, zakres przeniesienia i rozstrzygnięte rozbieżności opisuje [rejestr pochodzenia](docs/05-reference/sources.md). Katalog materiałów źródłowych został usunięty po kontroli przeniesienia plik po pliku; pliki źródłowe pozostają odtwarzalne z historii repozytorium.
 
