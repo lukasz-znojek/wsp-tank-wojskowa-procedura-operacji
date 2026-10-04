@@ -21,6 +21,8 @@ Dziennik operacyjny nie jest osobnym typem danych: jest rejestrem wpisów i zdar
 
 **Pola obowiązkowe w kontrakcie:** `id`, `synthetic`, `title`, `status`, `version`, `scenario_goal`, `stages`.
 
+**Dwa słowniki stanów w jednym kontrakcie:** pole `status` planu przyjmuje cykl życia artefaktu, a pole `stages[].status` każdego etapu przyjmuje stan pozycji mapy (`niezaliczone`, `w-toku`, `zielone`, `odrzucone`) - patrz [model stanów](model-stanow.md) i [ADR-005](decyzje/adr-005-stan-pozycji-w-kontrakcie.md).
+
 **Relacje:** jest nadrzędny wobec wpisów BMS, komunikatów i raportów SITREP, które odwołują się do jego identyfikatora.
 
 ## Wpis BMS
@@ -89,4 +91,4 @@ Zakres wyłączony: [cel i zakres](../00-overview/cel-i-zakres.md). Decyzja: [AD
 
 Nazwy plików kontraktów pochodzą z pierwszej wersji struktury i różnią się od nazw szablonów. Odwzorowanie jest jednoznaczne i podane w tabeli typów artefaktów wyżej. Zmiana nazw kontraktów wymagałaby aktualizacji wszystkich odnośników i nie wnosi wartości, dlatego nazwy pozostają.
 
-Wszystkie cztery kontrakty są w wersji JSON Schema Draft 2020-12, mają `additionalProperties: false` i przechodzą kontrolę [`scripts/validate_schemas.py`](../../scripts/validate_schemas.py). Status kontraktów jako decyzja: [ADR-003](decyzje/adr-003-json-schema.md).
+Wszystkie cztery kontrakty są w wersji JSON Schema Draft 2020-12, mają `additionalProperties: false` i przechodzą kontrolę [`scripts/validate_schemas.py`](../../scripts/validate_schemas.py). Każdy kontrakt ma w [`examples/`](../../examples/) przykład JSON, który ten sam skrypt waliduje wobec kontraktu, gdy dostępna jest biblioteka `jsonschema`. Status kontraktów jako decyzja: [ADR-003](decyzje/adr-003-json-schema.md).

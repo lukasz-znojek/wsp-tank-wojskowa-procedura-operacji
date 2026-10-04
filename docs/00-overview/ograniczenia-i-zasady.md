@@ -20,6 +20,7 @@ Dopuszczone są wyłącznie dane w całości wymyślone. Obowiązuje zamknięty 
 | Punkt odniesienia | `Punkt-A`, `Punkt-B` |
 | Rola z numerem | `Koordynator-01`, `Analityk-01`, `Recenzent-01` |
 | Plan operacji | `OP-ALFA-001` |
+| Wpis BMS | `BMS-ALFA-001` |
 | SITREP | `SITREP-ALFA-001` |
 | Komunikat | `MSG-ALFA-001` … `MSG-ALFA-005` |
 | Czas | etykieta względna `T+HH:MM`, np. `T+00:15` |
@@ -54,6 +55,6 @@ Poza tym: zdania oznajmujące, strona czynna, jeden termin na jedno pojęcie zgo
 
 ## Czego ta dokumentacja nie robi
 
-- **Nie egzekwuje większości własnych reguł.** Jedyną blokadą techniczną są walidatory i automatyczna walidacja: [`scripts/validate_schemas.py`](../../scripts/validate_schemas.py), [`scripts/validate_markdown.sh`](../../scripts/validate_markdown.sh) oraz [`.github/workflows/validate-docs.yml`](../../.github/workflows/validate-docs.yml). Reguła zapisana wyłącznie w tekście jest kontekstem i wykonawca może ją pominąć bez żadnego sygnału. Reguła, która ma naprawdę obowiązywać, musi trafić do walidatora albo do kontraktu danych.
+- **Nie egzekwuje większości własnych reguł.** Jedyną blokadą techniczną są walidatory i automatyczna walidacja: [`scripts/validate_schemas.py`](../../scripts/validate_schemas.py) (struktura kontraktów, zgodność przykładów JSON z kontraktami), [`scripts/validate_markdown.sh`](../../scripts/validate_markdown.sh) (sekcje procedur, tekst zastępczy, ścieżki bezwzględne, puste sekcje) oraz [`.github/workflows/validate-docs.yml`](../../.github/workflows/validate-docs.yml). Reguła zapisana wyłącznie w tekście jest kontekstem i wykonawca może ją pominąć bez żadnego sygnału. Reguła, która ma naprawdę obowiązywać, musi trafić do walidatora albo do kontraktu danych.
 - **Nie rozstrzyga za koordynatora.** Dokumenty opisują kryteria; rozstrzygnięcie należy do roli wskazanej w [macierzy uprawnień](../01-product/role-i-uprawnienia.md).
 - **Nie zastępuje kontroli ludzkiej przy danych niedopuszczonych.** Walidator wykrywa brakującą sekcję i niepoprawny schemat, ale nie rozpoznaje danych rzeczywistych wpisanych w prawidłowe pole.

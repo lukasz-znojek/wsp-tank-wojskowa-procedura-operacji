@@ -10,7 +10,7 @@ Katalog opisuje architekturę **pojęciową** symulacyjnego środowiska BMS, mod
 | [model-danych.md](model-danych.md) | cztery typy artefaktów, pola obowiązkowe, relacje, odwzorowanie na kontrakty danych |
 | [model-stanow.md](model-stanow.md) | cykl życia artefaktu, przejścia dozwolone i niedozwolone, historia zmian |
 | [integracje.md](integracje.md) | brak integracji produkcyjnych jako decyzja oraz warunki dla przyszłych integracji |
-| [decyzje/](decyzje/) | cztery zapisy ADR |
+| [decyzje/](decyzje/) | pięć zapisów ADR |
 
 ## Kolejność czytania
 
@@ -28,5 +28,6 @@ Katalog opisuje architekturę **pojęciową** symulacyjnego środowiska BMS, mod
 | [ADR-002](decyzje/adr-002-markdown-zrodlo-prawdy.md) | Markdown jako źródło prawdy | Zaakceptowana |
 | [ADR-003](decyzje/adr-003-json-schema.md) | JSON Schema dla kluczowych artefaktów | Planowana |
 | [ADR-004](decyzje/adr-004-rozdzielenie-artefaktow.md) | Rozdzielenie procedury, szablonu i przykładu | Zaakceptowana |
+| [ADR-005](decyzje/adr-005-stan-pozycji-w-kontrakcie.md) | Stan pozycji mapy etapów w kontrakcie planu operacji | Zaakceptowana |
 
 Indeks nadrzędny: [`DECISIONS.md`](../../DECISIONS.md). Każdy ADR ma sekcje Status, Kontekst, Decyzja i Konsekwencje, a w Konsekwencjach osobno skutki pozytywne i koszty.

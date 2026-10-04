@@ -2,7 +2,7 @@
 
 ## Cel
 
-Projekt porządkuje wiedzę potrzebną do stworzenia symulacyjnego systemu BMS oraz zestawu powiązanych procedur, meldunków i szablonów. Źródłem prawdy są wersjonowane dokumenty Markdown, a formaty wymiany danych będą opisywane schematami JSON Schema.
+do ustalenia. ogolnie stworzenie skilla dla prowadzenia procesu w jednym oknie z wykorzystanie mocnego modelu jak opus lub fable z orkiestracja subagentow w moneklaturze i reżimie wojskowym.
 
 ## Zakres
 

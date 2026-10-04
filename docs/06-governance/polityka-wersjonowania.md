@@ -37,7 +37,7 @@ Zmiana niezgodna wstecz wymaga wszystkich trzech kroków:
 
 ## Historia zmian
 
-Historia zmian artefaktu scenariusza jest prowadzona w [dzienniku operacyjnym](../04-templates/dziennik-operacyjny.md) i zawiera przy każdej zmianie stanu: poprzedni stan, nowy stan, rolę decyzyjną, uzasadnienie oraz identyfikator artefaktu. Wynika to z wymagania `WF-6`.
+Historia zmian artefaktu scenariusza jest prowadzona w tabeli „Historia zmian” samego artefaktu i zawiera przy każdej zmianie stanu: poprzedni stan, nowy stan, rolę decyzyjną i uzasadnienie. Wynika to z wymagania `WF-6`. [Dziennik operacyjny](../04-templates/dziennik-operacyjny.md) rejestruje tę samą zmianę jednym wierszem z czasem, identyfikatorem artefaktu, zdarzeniem, nowym statusem i autorem - patrz [model stanów](../02-architecture/model-stanow.md).
 
 Dziennik jest wyłącznie dopisywany. Wpis raz zapisany nie jest poprawiany — błąd prostuje wpis następny. Rozjazd między statusem artefaktu a ostatnim wpisem dziennika jest faktem do wypisania przy przeglądzie, nie rozbieżnością do wygładzenia.
 
@@ -54,4 +54,4 @@ Wycofania nie przeprowadza się przez nadpisanie historii, z wyjątkiem ostatnie
 
 ## Granica egzekwowania
 
-Zgodność wstecz **nie jest sprawdzana maszynowo**. [`validate_schemas.py`](../../scripts/validate_schemas.py) kontroluje strukturę kontraktu, nie relację między jego wersjami. Ocena zgodności jest kryterium przeglądu wykonywanym przez człowieka — pozycja 7 w [kryteriach dla zmiany schematu](../01-product/kryteria-akceptacji.md).
+Zgodność wstecz **nie jest sprawdzana maszynowo**. [`validate_schemas.py`](../../scripts/validate_schemas.py) kontroluje strukturę kontraktu i zgodność przykładów JSON z bieżącą wersją kontraktu, nie relację między jego wersjami. Ocena zgodności jest kryterium przeglądu wykonywanym przez człowieka — pozycja 7 w [kryteriach dla zmiany schematu](../01-product/kryteria-akceptacji.md).

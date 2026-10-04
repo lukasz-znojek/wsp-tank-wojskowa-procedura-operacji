@@ -2,8 +2,7 @@
 
 ## Status
 
-Zastąpiona przez [ADR-005](adr-005-cel-skill-orkiestrujacy.md) — 2026-09-09.
-Treść poniżej zostaje bez zmian jako zapis stanu, w którym decyzja obowiązywała.
+Zaakceptowana.
 
 ## Kontekst
 

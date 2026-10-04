@@ -7,7 +7,7 @@ Wymagania dotyczą demonstratora pracującego wyłącznie na fikcyjnych artefakt
 | ID | Wymaganie | Sprawdzalny rezultat | Artefakt śledzenia |
 | --- | --- | --- | --- |
 | WF-1 | Plan scenariusza | Można utworzyć plan z identyfikatorem, etapami i stanem artefaktu | [szablon planu operacji](../04-templates/plan-operacji.md), [przykład ALFA](../../examples/operation-example-alpha.md) |
-| WF-2 | Wpis BMS | Można zarejestrować wpis z identyfikatorem, źródłem i poziomem pewności | [szablon wpisu BMS](../04-templates/wpis-bms.md) |
+| WF-2 | Wpis BMS | Można zarejestrować wpis z identyfikatorem, źródłem i poziomem pewności | [szablon wpisu BMS](../04-templates/wpis-bms.md), [przykład wpisu BMS](../../examples/bms-event-example.md) |
 | WF-3 | Komunikat | Można zapisać komunikat z czasem względnym i powiązaniem | [szablon komunikatu](../04-templates/komunikat.md), [dziennik przykładowy](../../examples/communication-log-example.md) |
 | WF-4 | SITREP | Można utworzyć raport z faktami, hipotezami, falsyfikatorami i lukami | [szablon SITREP](../04-templates/sitrep.md), [przykład SITREP](../../examples/sitrep-example.md) |
 | WF-5 | Powiązania artefaktów | Artefakt wskazuje co najmniej jeden powiązany identyfikator, gdy relacja istnieje | [model danych](../02-architecture/model-danych.md) |
@@ -27,9 +27,9 @@ Wymagania dotyczą demonstratora pracującego wyłącznie na fikcyjnych artefakt
 
 | ID | Czym sprawdzić |
 | --- | --- |
-| WF-1 … WF-4 | obecność szablonu z kompletem pól obowiązkowych oraz przykładu przechodzącego kontrolę odpowiedniego schematu |
+| WF-1 … WF-4 | obecność szablonu z kompletem pól obowiązkowych oraz przykładu w postaci Markdown i JSON; przykład JSON przechodzi kontrolę odpowiedniego schematu w `python3 scripts/validate_schemas.py` uruchomionym z dostępną biblioteką `jsonschema` |
 | WF-5 | każdy przykład wskazuje co najmniej jeden powiązany identyfikator w sekcji powiązań |
-| WF-6 | każda zmiana stanu w przykładowym dzienniku ma wypełnione: poprzedni stan, nowy stan, rolę, uzasadnienie |
+| WF-6 | każda zmiana stanu w tabeli „Historia zmian” przykładowego artefaktu ma wypełnione: poprzedni stan, nowy stan, rolę, uzasadnienie; przykładowy dziennik niesie dla tej samej zmiany czas, nowy status i autora |
 | WF-7, WN-4 | `python3 scripts/validate_schemas.py` oraz `bash scripts/validate_markdown.sh` kończą się kodem 0 |
 | WN-1 | `bash scripts/validate_markdown.sh` nie zgłasza ścieżek bezwzględnych; kontrola ludzka wobec [klasyfikacji informacji](../06-governance/klasyfikacja-informacji.md) |
 | WN-2 | historia commitów dla pliku dokumentu i pliku schematu |

@@ -10,6 +10,8 @@ Po przejściu kontroli struktury, jeżeli dostępna jest opcjonalna biblioteka
 `jsonschema`, waliduje przykłady JSON z katalogu examples/ wobec
 odpowiadających im kontraktów. Bez biblioteki walidacja przykładów jest
 pomijana z komunikatem na stderr, a kontrola struktury pozostaje w mocy.
+Opcja `--require-jsonschema` zamienia to pominięcie w błąd (kod 1); używa
+jej automatyczna walidacja, żeby brak biblioteki nie przeszedł po cichu.
 
 Kod wyjścia: 0 gdy wszystko przeszło, 1 gdy wykryto błąd.
 """
@@ -24,15 +26,21 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 SCHEMA_DIR = REPO_ROOT / "schemas"
 EXAMPLE_DIR = REPO_ROOT / "examples"
 REQUIRED_KEYS = ("$schema", "title", "type", "properties", "required")
+REQUIRE_FLAG = "--require-jsonschema"
 
 # Pary (przykład, kontrakt) - ścieżki względem katalogu głównego repozytorium.
 EXAMPLE_SCHEMA_PAIRS = (
     ("examples/operation-example-alpha.json", "schemas/operation.schema.json"),
+    ("examples/bms-event-example-alpha.json", "schemas/bms-event.schema.json"),
     ("examples/message-example-alpha.json", "schemas/message.schema.json"),
     ("examples/sitrep-example-alpha.json", "schemas/sitrep.schema.json"),
 )
 
 SKIP_MESSAGE = "Pominięto walidację przykładów JSON: biblioteka jsonschema nie jest dostępna."
+REQUIRED_MESSAGE = (
+    "BŁĄD: biblioteka jsonschema nie jest dostępna, a uruchomienie z opcją "
+    f"{REQUIRE_FLAG} wymaga walidacji przykładów JSON."
+)
 
 
 def validate_file(path: Path) -> list[str]:
@@ -83,16 +91,17 @@ def load_json(path: Path) -> tuple[object | None, str | None]:
         return None, f"niepoprawny JSON: {exc}"
 
 
-def validate_examples() -> int:
+def validate_examples(require_library: bool) -> int:
     """Waliduje przykłady JSON wobec kontraktów. Zwraca liczbę przykładów z błędami.
 
-    Zwraca -1, gdy biblioteka jsonschema nie jest dostępna (walidacja pominięta).
+    Zwraca -1, gdy biblioteka jsonschema nie jest dostępna i walidacja została
+    pominięta; komunikat zależy od tego, czy brak biblioteki jest dopuszczony.
     """
     try:
         import jsonschema
         from jsonschema import validators as jsonschema_validators
     except ImportError:
-        print(SKIP_MESSAGE, file=sys.stderr)
+        print(REQUIRED_MESSAGE if require_library else SKIP_MESSAGE, file=sys.stderr)
         return -1
 
     failed = 0
@@ -135,7 +144,14 @@ def validate_examples() -> int:
     return failed
 
 
-def main() -> int:
+def main(argv: list[str]) -> int:
+    unknown = [arg for arg in argv if arg != REQUIRE_FLAG]
+    if unknown:
+        print(f"BŁĄD: nieznane argumenty: {' '.join(unknown)}", file=sys.stderr)
+        print(f"Użycie: validate_schemas.py [{REQUIRE_FLAG}]", file=sys.stderr)
+        return 2
+    require_library = REQUIRE_FLAG in argv
+
     if not SCHEMA_DIR.is_dir():
         print(f"BŁĄD: brak katalogu {SCHEMA_DIR}", file=sys.stderr)
         return 1
@@ -162,9 +178,9 @@ def main() -> int:
         return 1
 
     print()
-    examples_failed = validate_examples()
+    examples_failed = validate_examples(require_library)
     if examples_failed < 0:
-        return 0
+        return 1 if require_library else 0
     total = len(EXAMPLE_SCHEMA_PAIRS)
     if examples_failed:
         print(f"Zwalidowano przykładów: {total}, z błędami: {examples_failed}", file=sys.stderr)
@@ -174,4 +190,4 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    sys.exit(main(sys.argv[1:]))

@@ -89,4 +89,5 @@ Brak potwierdzenia jest stanem dopuszczalnym i musi wyglądać na brak, nie na o
 - Procedura: [przejazd](../03-procedures/przejazd.md)
 - Kontrakt danych: [`schemas/bms-event.schema.json`](../../schemas/bms-event.schema.json)
 - Architektura: [architektura BMS](../02-architecture/architektura-bms.md), [model stanów](../02-architecture/model-stanow.md)
+- Przykład: [`examples/bms-event-example.md`](../../examples/bms-event-example.md)
 - Referencja projektowa: [prompt projektowy interfejsu BMS](../05-reference/prompt-bms-design.md)

@@ -52,7 +52,8 @@
           "verification": { "type": "string" },
           "status": {
             "type": "string",
-            "enum": ["szkic", "do-przegladu", "zatwierdzony", "opublikowany", "odrzucony"]
+            "enum": ["niezaliczone", "w-toku", "zielone", "odrzucone"],
+            "description": "Stan pozycji mapy etapów. Słownik odrębny od cyklu życia artefaktu (pole status planu). Wartość w-toku odpowiada zapisowi „w toku” w dokumentacji."
           }
         },
         "required": ["ordinal", "name", "status"]

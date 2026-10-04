@@ -9,12 +9,12 @@ Szablon pozostaje pusty. Wypełniony szablon przestaje być szablonem i staje si
 | Szablon | Zastosowanie | Powiązana procedura | Przykład |
 | --- | --- | --- | --- |
 | [plan-operacji.md](plan-operacji.md) | plan fikcyjnego scenariusza: cel, mapa etapów, progi, zależności | [think-tank](../03-procedures/think-tank.md) | [`operation-example-alpha.md`](../../examples/operation-example-alpha.md) |
-| [wpis-bms.md](wpis-bms.md) | jedno zdarzenie w widoku stanu, z oceną pewności | [zwiad](../03-procedures/zwiad.md), [rozpoznanie](../03-procedures/rozpoznanie.md), [komenda](../03-procedures/komenda.md) | nie dotyczy — wpisy widoku pokazuje dziennik przykładowy |
+| [wpis-bms.md](wpis-bms.md) | jedno zdarzenie w widoku stanu, z oceną pewności | [zwiad](../03-procedures/zwiad.md), [rozpoznanie](../03-procedures/rozpoznanie.md), [komenda](../03-procedures/komenda.md) | [`bms-event-example.md`](../../examples/bms-event-example.md) |
 | [komunikat.md](komunikat.md) | jedna wymiana informacji między rolami | [łączność](../03-procedures/lacznosc.md) | [`communication-log-example.md`](../../examples/communication-log-example.md) |
 | [sitrep.md](sitrep.md) | raport stanu w trakcie scenariusza | [meldunek](../03-procedures/meldunek.md), [przejazd](../03-procedures/przejazd.md) | [`sitrep-example.md`](../../examples/sitrep-example.md) |
 | [dziennik-operacyjny.md](dziennik-operacyjny.md) | rejestr zdarzeń i rejestr naruszeń scenariusza | [przejazd](../03-procedures/przejazd.md), [komenda](../03-procedures/komenda.md) | [`communication-log-example.md`](../../examples/communication-log-example.md) |
 
-Kontrakty danych: [`operation.schema.json`](../../schemas/operation.schema.json), [`bms-event.schema.json`](../../schemas/bms-event.schema.json), [`message.schema.json`](../../schemas/message.schema.json), [`sitrep.schema.json`](../../schemas/sitrep.schema.json). Odwzorowanie nazw kontraktów na typy artefaktów: [model danych](../02-architecture/model-danych.md).
+Kontrakty danych: [`operation.schema.json`](../../schemas/operation.schema.json), [`bms-event.schema.json`](../../schemas/bms-event.schema.json), [`message.schema.json`](../../schemas/message.schema.json), [`sitrep.schema.json`](../../schemas/sitrep.schema.json). Odwzorowanie nazw kontraktów na typy artefaktów: [model danych](../02-architecture/model-danych.md). Każdy szablon ma pod metryką tabelę odwzorowania pól na własności kontraktu, a każdy przykład Markdown ma maszynowy odpowiednik JSON w [`examples/`](../../examples/), walidowany przez [`scripts/validate_schemas.py`](../../scripts/validate_schemas.py).
 
 Dziennik operacyjny nie jest osobnym typem danych — jest rejestrem wpisów, dlatego nie ma własnego kontraktu.
 
